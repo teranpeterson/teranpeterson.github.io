@@ -28,7 +28,7 @@ twitter_username: mavr1k7
 github_username:  mavr1k7
 
 # Build settings
-theme: minima
+theme: jekyll-theme-cayman
 plugins:
   - jekyll-feed
 
