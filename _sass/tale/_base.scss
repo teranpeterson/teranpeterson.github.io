@@ -5,6 +5,7 @@
 
 html,
 body {
+  background-color: $default-backgroud;
   color: $default-color;
   margin: 0;
   padding: 0;
@@ -36,7 +37,7 @@ h6 {
 }
 
 a {
-  color: $blue;
+  color: $link-blue;
   text-decoration: none;
 }
 

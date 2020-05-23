@@ -1,14 +1,27 @@
-// Colors
-$default-color: #555;
-$default-shade: #353535;
-$default-tint: #aaa;
+// Main Colors
+$default-backgroud: #181a1b;  // Black Background
+$default-color: #c9c5be;      // White Main Text
+$default-shade: #d5d2cc;      // Lighter Text
+$default-third: #454139;      // Shadow Text
+$default-tint: #bab5ab;       // Off White
+
 $grey-1: #979797;
 $grey-2: #e5e5e5;
-$grey-3: #f9f9f9;
-$white: #fff;
-$blue: #4a9ae1;
+
+$black: #000;                 // True Black
+$white: #fff;                 // True White
+
+$link-blue: #5ca9e4;          // Blue for links
 $shadow-color: rgba(0, 0, 0, .2);
-$code-color: #bf616a;
+
+// Code Colors
+$code-color: #bf616a;         // 
+$code-navy: #0d2232;          // Navy blocks
+$code-green: #2ca58d;         // Green code text
+$code-dark-blue: #006699;     // Blue code text
+$code-light-blue: #00ccff;    // Sky code text
+$code-red: #cc3300;           // Red code text
+$code-orange: #ff6600;        // Orange code text
 
 // Fonts
 $serif-primary: 'Libre Baskerville', 'Times New Roman', Times, serif;
