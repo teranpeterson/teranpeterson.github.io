@@ -1,5 +1,5 @@
 ---
-layout: about
+layout: construction
 title: "About"
 permalink: /about/
 ---

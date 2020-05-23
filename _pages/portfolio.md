@@ -1,5 +1,5 @@
 ---
-layout: portfolio
+layout: construction
 title: Portfolio
 permalink: /portfolio/
 ---
