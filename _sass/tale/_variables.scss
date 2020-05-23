@@ -15,13 +15,23 @@ $link-blue: #5ca9e4;          // Blue for links
 $shadow-color: rgba(0, 0, 0, .2);
 
 // Code Colors
+$code-comment-green: #6A9955;
+$code-main-blue: #569cd6;
+$code-accent-blue: #9cdcfe;
+$code-tag-yellow: #d7ba7d;
+$code-string-orange: #ce9178;
+
+
 $code-color: #bf616a;         // 
 $code-navy: #0d2232;          // Navy blocks
 $code-green: #2ca58d;         // Green code text
-$code-dark-blue: #006699;     // Blue code text
+$code-dark-blue: #1475A3;     // Blue code text
 $code-light-blue: #00ccff;    // Sky code text
 $code-red: #cc3300;           // Red code text
 $code-orange: #ff6600;        // Orange code text
+$code-dark-green: #137411;    // Dark green text
+$code-yellow: #f3e071;        // Light yellow text
+$code-pale-blue: #64b1e6;     // Pale blue text
 
 // Fonts
 $serif-primary: 'Libre Baskerville', 'Times New Roman', Times, serif;
