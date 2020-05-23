@@ -4,9 +4,9 @@ code {
 }
 
 code {
-  background-color: $code-navy;
+  background-color: $code-background-blue;
   border-radius: 3px;
-  color: $code-color;
+  color: $code-regex-red;
   font-size: 85%;
   padding: .25em .5em;
 }
@@ -23,7 +23,7 @@ pre code {
 }
 
 .highlight {
-  background-color: $code-navy;
+  background-color: $code-background-blue;
   border-radius: 3px;
   line-height: 1.4;
   margin: 0 0 1rem;
