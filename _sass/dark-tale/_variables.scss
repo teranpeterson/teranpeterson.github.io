@@ -1,5 +1,7 @@
 // Main Colors
 $default-backgroud: #181a1b;  // Black Background
+$default-accent: #1a1b1c;
+$default-off: #232627;
 $default-color: #c9c5be;      // White Main Text
 $default-shade: #d5d2cc;      // Lighter Text
 $default-third: #454139;      // Shadow Text
@@ -32,7 +34,8 @@ $code-regex-yellow: #d7ba7d;
 // Fonts
 $serif-primary: 'Libre Baskerville', 'Times New Roman', Times, serif;
 $serif-secondary: Palatino, 'Palatino LT STD', 'Palatino Linotype', 'Book Antiqua', 'Georgia', serif;
-$sans-serif: 'Helvetica Neue', 'Segoe UI', Helvetica, Arial, sans-serif;
+// $sans-serif: 'Helvetica Neue', 'Segoe UI', Helvetica, Arial, sans-serif;
+$sans-serif: 'Raleway', sans-serif;
 $monospaced: Menlo, Monaco, monospace;
 
 @mixin box-sizing($type: border-box) {

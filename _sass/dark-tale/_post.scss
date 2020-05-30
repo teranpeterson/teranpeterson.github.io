@@ -1,6 +1,10 @@
 .post {
   padding: 3rem 0;
-
+  display: block;
+  margin: 0 auto;
+  max-width: 1000px;
+  width: 80%;
+  
   &-info {
     color: $default-tint;
     font-family: $serif-secondary;

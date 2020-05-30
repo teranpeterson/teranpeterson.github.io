@@ -9,16 +9,23 @@ body {
   color: $default-color;
   margin: 0;
   padding: 0;
+  height: 100%;
 }
 
 html {
   font-family: $serif-primary;
   font-size: 14px;
-  overflow-y: scroll;
+  overflow: scroll;
+  overflow-x: hidden;
 
   @media (min-width: 600px) {
     font-size: 16px;
   }
+}
+
+::-webkit-scrollbar {
+  width: 0px;  /* Remove scrollbar space */
+  background: transparent;  /* Optional: just make scrollbar invisible */
 }
 
 body {
