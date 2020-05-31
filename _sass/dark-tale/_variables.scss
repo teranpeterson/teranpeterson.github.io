@@ -26,12 +26,14 @@ $serif-secondary: Palatino, 'Palatino LT STD', 'Palatino Linotype', 'Book Antiqu
 $sans-serif: 'Raleway', sans-serif;
 $monospaced: Menlo, Monaco, monospace;
 
+// Sizing
 @mixin box-sizing($type: border-box) {
   -webkit-box-sizing: $type;
      -moz-box-sizing: $type;
           box-sizing: $type;
 }
 
+// Transitions
 @mixin transition($args...) {
   -webkit-transition: $args;
      -moz-transition: $args;

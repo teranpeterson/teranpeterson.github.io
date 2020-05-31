@@ -17,15 +17,15 @@
   }
 
   &-title {
-    color: $default-shade;
+    color: $default-color;
     font-family: $sans-serif;
-    font-size: 4rem;
+    font-size: 4rem; // TODO: Resize with page?
     margin: 1rem 0;
     text-align: center;
   }
 
   &-line {
-    border-top: 0.4rem solid $default-color;
+    border-top: 0.4rem solid $default-grey;
     display: block;
     margin: 0 auto 3rem;
     width: 4rem;
@@ -45,23 +45,11 @@
   }
 
   img + em {
-    color: $default-grey;
+    color: $default-color;
     display: block;
     font-family: $sans-serif;
     font-size: 0.9rem;
     font-style: normal;
     text-align: center;
-  }
-
-  // CSS for making emoji inline
-  img.emoji {
-    display: inline-block;
-    left: 0;
-    transform: none;
-    width: 1rem;
-    height: 1rem;
-    vertical-align: text-top;
-    padding: 0;
-    margin: 0;
   }
 }
