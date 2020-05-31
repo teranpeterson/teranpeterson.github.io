@@ -1,40 +1,28 @@
 // Main Colors
 $default-backgroud: #181a1b;  // Black Background
-$default-accent: #1a1b1c;
-$default-off: #232627;
+$default-accent: #232627;     // Nav/Footer Divider
 $default-color: #c9c5be;      // White Main Text
-$default-shade: #d5d2cc;      // Lighter Text
-$default-third: #454139;      // Shadow Text
-$default-tint: #bab5ab;       // Off White
-
-$grey-1: #979797;
-$grey-2: #e5e5e5;
-
-$black: #000;                 // True Black
-$white: #fff;                 // True White
-
+$default-shade: #e5e5e5;      // Lighter Text
+$default-grey: #979797;       // Faded Grey
 $link-blue: #5ca9e4;          // Blue for links
-$shadow-color: rgba(0, 0, 0, .2);
 
 // Code Colors
-$code-background-blue: #0d2232;
-$code-comment-green: #6a9955;
-$code-accent-green: #4ec9b0;
-$code-number-green: #b5cea8;
-$code-main-blue: #569cd6;
-$code-accent-blue: #9cdcfe;
-$code-tag-yellow: #dcdcaa;
-$code-string-orange: #ce9178;
-$code-keyword-purple: #c586c0;
-$code-error-red: #f44747;
-$code-regex-red: #d16969;
-$code-regex-yellow: #d7ba7d;
+$code-background-blue:#0d2232;// Background blue
+$code-comment-green: #6a9955; // Comment green
+$code-accent-green: #4ec9b0;  // Keyword green
+$code-number-green: #b5cea8;  // Number green
+$code-main-blue: #569cd6;     // Keyword blue
+$code-accent-blue: #9cdcfe;   // Variable blue
+$code-tag-yellow: #dcdcaa;    // Tag yellow
+$code-string-orange: #ce9178; // String orange
+$code-keyword-purple: #c586c0;// Keyword purple
+$code-error-red: #f44747;     // Error red
+$code-regex-red: #d16969;     // Regex red
+$code-regex-yellow: #d7ba7d;  // Regex yellow
 
-  
 // Fonts
 $serif-primary: 'Libre Baskerville', 'Times New Roman', Times, serif;
 $serif-secondary: Palatino, 'Palatino LT STD', 'Palatino Linotype', 'Book Antiqua', 'Georgia', serif;
-// $sans-serif: 'Helvetica Neue', 'Segoe UI', Helvetica, Arial, sans-serif;
 $sans-serif: 'Raleway', sans-serif;
 $monospaced: Menlo, Monaco, monospace;
 

@@ -52,10 +52,7 @@
 }
 
 .nav {
-  // box-shadow: 0 2px 2px -2px $shadow-color;
-  // overflow: auto;
-  background-color: $default-accent;
-  border-bottom: 0.1rem solid $default-off;
+  border-bottom: 0.1rem solid $default-accent;
 
   &-container {
     margin: 1rem auto;
@@ -124,6 +121,7 @@ footer {
   font-family: $serif-secondary;
   padding: 2rem 0;
   text-align: center;
+  border-top: 0.1rem solid $default-accent;
 
   span {
     color: $default-color;

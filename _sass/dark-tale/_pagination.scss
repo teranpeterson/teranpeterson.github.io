@@ -1,9 +1,12 @@
 .pagination {
-  border-top: .5px solid $default-third;
   font-family: $serif-secondary;
   padding-top: 2rem;
   position: relative;
   text-align: center;
+  margin: 0 auto;
+  max-width: 1000px;
+  width: 80%;
+  margin-bottom: 50px;
 
   span {
     color: $default-shade;

@@ -24,8 +24,8 @@ html {
 }
 
 ::-webkit-scrollbar {
-  width: 0px;  /* Remove scrollbar space */
-  background: transparent;  /* Optional: just make scrollbar invisible */
+  width: 0px;
+  background: transparent;
 }
 
 body {
@@ -49,8 +49,8 @@ a {
 }
 
 blockquote {
-  border-left: .25rem solid $grey-2;
-  color: $grey-1;
+  border-left: .25rem solid $default-shade;
+  color: $default-grey;
   margin: .8rem 0;
   padding: .5rem 1rem;
 

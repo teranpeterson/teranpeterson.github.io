@@ -5,7 +5,7 @@
   width: 80%;
 
   &-item {
-    border-bottom: 1px solid $grey-2;
+    border-bottom: 1px solid $default-shade;
     color: $default-color;
     display: block;
     padding: 2rem 0;
@@ -21,7 +21,7 @@
   }
 
   &-time {
-    color: $default-tint;
+    color: $default-grey;
     font-family: $serif-secondary;
     letter-spacing: .5px;
   }

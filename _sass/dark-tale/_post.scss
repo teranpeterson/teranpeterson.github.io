@@ -6,7 +6,7 @@
   width: 80%;
   
   &-info {
-    color: $default-tint;
+    color: $default-grey;
     font-family: $serif-secondary;
     letter-spacing: 0.5px;
     text-align: center;
@@ -25,7 +25,7 @@
   }
 
   &-line {
-    border-top: 0.4rem solid $default-third;
+    border-top: 0.4rem solid $default-color;
     display: block;
     margin: 0 auto 3rem;
     width: 4rem;
@@ -45,7 +45,7 @@
   }
 
   img + em {
-    color: $default-tint;
+    color: $default-grey;
     display: block;
     font-family: $sans-serif;
     font-size: 0.9rem;
