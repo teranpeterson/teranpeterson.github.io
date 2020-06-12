@@ -10,7 +10,8 @@
 
   span {
     color: $default-shade;
-    font-size: 1.1rem;
+    font-size: 1.3rem;
+    font-family: $serif-secondary;
   }
 
   .arrow {
@@ -31,5 +32,9 @@
 
   .right {
     right: 0;
+  }
+
+  .top {
+    color: $default-color;
   }
 }

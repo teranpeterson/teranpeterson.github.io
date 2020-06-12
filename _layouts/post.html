@@ -26,12 +26,12 @@ layout: default
 
   <div class="pagination">
     {% if page.next.url %}
-    <a href="{{ page.next.url | prepend: site.baseurl }}" class="left arrow">&#8592;</a>
+    <a href="{{ page.next.url | prepend: site.baseurl }}" class="left arrow"><i class="fas fa-chevron-left"></i></a>
     {% endif %}
     {% if page.previous.url %}
-    <a href="{{ page.previous.url | prepend: site.baseurl }}" class="right arrow">&#8594;</a>
+    <a href="{{ page.previous.url | prepend: site.baseurl }}" class="right arrow"><i class="fas fa-chevron-right"></i></a>
     {% endif %}
 
-    <a href="#" class="top">Top</a>
+    <a href="#" class="top"><i class="fas fa-chevron-up"></i></a>
   </div>
 </main>
