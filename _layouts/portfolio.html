@@ -3,10 +3,21 @@ layout: default
 ---
 
 <main>
-    <div class="post">
-        <h1 class="post-title">{{ page.title }}</h1>
-        <div class="post-line"></div>
+<div class="post">
+    <h1 class="post-title">{{ page.title }}</h1>
+    <div class="post-line"></div>
 
-        {{ content }}
+    {{ content }}
+    <div class="timeline">
+        {% for item in site.data.timeline %}
+        <div class="timeline-item">
+            <div class="timeline-item-content">
+                <h2>{{ item.title }}</h2>
+                <h6 class="timeline-item-date">{{ item.from }} — {{ item.to }}</h6>
+                <p>{{ item.description }}</p>
+            </div>
+        </div>
+        {% endfor %}
     </div>
+</div>
 </main>
