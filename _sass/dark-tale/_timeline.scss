@@ -4,7 +4,6 @@
     padding: 5px 0;
   
     &:after {
-      // Left Border
       content: "";
       width: 4px;
       height: 100%;
@@ -19,7 +18,6 @@
       font-family: $serif-primary;
   
       &:after {
-        // Circle
         content: "";
         width: 12px;
         height: 12px;
@@ -31,17 +29,37 @@
         top: 8px;
         z-index: 10;
       }
+
+      &-title {
+          margin-bottom: 0px;
+          padding-bottom: 0px;
+      }
+
+      &-subtitle {
+          margin-top: 0px;
+          padding-top: 0px;
+      }
   
       &-content {
         margin: 40px;
         padding-bottom: 20px;
         border-bottom: 1px dashed $default-color;
+        display: table;
+        clear: both;
       }
 
       &-date {
         margin-top: -5px;
         margin-bottom: 15px;
-        color: #6c757d;
+        color: $default-grey;
+        font-family: $serif-secondary;
+        letter-spacing: .5px;
+      }
+
+      .column {
+        float: left;
+        width: 50%;
+        padding: 10px;
       }
     }
   }
