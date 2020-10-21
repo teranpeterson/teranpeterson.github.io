@@ -1,72 +1,91 @@
 .timeline {
+  position: relative;
+  background-color: $default-background;
+  padding: 5px 0;
+
+  &:after {
+    content: "";
+    width: 4px;
+    height: 100%;
+    background-color: $default-grey;
+    position: absolute;
+    left: -4px;
+    top: 0;
+  }
+
+  &-item {
     position: relative;
-    background-color: $default-background;
-    padding: 5px 0;
-  
+    font-family: $serif-primary;
+
     &:after {
       content: "";
-      width: 4px;
-      height: 100%;
-      background-color: $default-grey;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: 4px solid $default-grey;
+      background-color: $default-background;
       position: absolute;
-      left: -4px;
-      top: 0;
+      left: -12px;
+      top: 8px;
+      z-index: 10;
     }
-  
-    &-item {
-      position: relative;
-      font-family: $serif-primary;
-  
-      &:after {
-        content: "";
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
-        border: 4px solid $default-grey;
-        background-color: $default-background;
-        position: absolute;
-        left: -12px;
-        top: 8px;
-        z-index: 10;
-      }
 
-      &-content {
-        margin: 40px;
-        padding-bottom: 20px;
-        border-bottom: 1px dashed $default-color;
-      }
+    &-content {
+      margin: 40px;
+      padding-bottom: 20px;
+      border-bottom: 1px dashed $default-color;
+    }
 
-      &-title {
-        margin-bottom: 0px;
-        padding-bottom: 0px;
-      }
+    &-title {
+      margin-bottom: 0px;
+      padding-bottom: 0px;
+    }
 
-      &-subtitle {
-        margin-top: 0px;
+    &-subtitle {
+      margin-top: 0px;
+      padding-top: 0px;
+    }
+
+    &-location {
+      margin-top: 14px;
+      margin-bottom: 0px;
+      padding-bottom: 0px;
+    }
+
+    &-date {
+      margin-top: -5px;
+      margin-bottom: 15px;
+      color: $default-grey;
+      font-family: $serif-secondary;
+      letter-spacing: .5px;
+    }
+
+    &-desc {
+      margin-bottom: 4px !important;
+    }
+
+    .columnl {
+      flex: 50%;
+    }
+
+    .columnr {
+      flex: 50%;
+      text-align: right;
+      padding-top: 20px;
+
+      @media (max-width: 600px) {
+        text-align: left;
         padding-top: 0px;
+        padding-bottom: 20px;
       }
+    }
 
-      &-location {
-        margin-top: 14px;
-        margin-bottom: 0px;
-        padding-bottom: 0px;
-      }
+    .row {
+      display: flex;
 
-      &-date {
-        margin-top: -5px;
-        margin-bottom: 15px;
-        color: $default-grey;
-        font-family: $serif-secondary;
-        letter-spacing: .5px;
-      }
-
-      .column {
-        flex: 50%;
-      }
-
-      .row {
-        display: flex;
+      @media (max-width: 600px) {
+        display: initial;
       }
     }
   }
-  
+}

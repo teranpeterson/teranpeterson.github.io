@@ -3,34 +3,37 @@
   from: Jan 2018
   to: Apr 2021
   location: Provo, UT
-  description: GPA - 3.71<br>
-               Relevant Coursework - Advanced Programming Concepts, Algorithm Design and Analysis, Computational Theory,
-               Systems Programming, Computing Competitions, Computer Security, Programming Languages<br>
-               Clubs - IT Security, YHack, Computing Competitions
+  description: 
+    - GPA - 3.71
+    - Coursework - Advanced Programming, Algorithm Design, Computer Security, Programming Languages
+    - Clubs - IT Security, YHack, Computing Competitions
 
 - title: Security Engineer
   subtitle: BYU Office of IT
   from: June 2019
   to: Present
   location: Provo, UT
-  description: Engineered microservices to aggregate thousands of security events a minute from 4 large universities<br>
-               Created a set of automated scripts to increase analysts' response time to recurring security threats<br>
-               Designed a continuous integration pipeline to maintain the quality and consistency of code deployments
+  description: 
+    - Engineered microservices to aggregate thousands of security events a minute from 4 large universities
+    - Created a set of automated scripts to increase analysts' response time to recurring security threats
+    - Designed a continuous integration pipeline to maintain the quality and consistency of code deployments
 
 - title: Senior Web Developer
   subtitle: BYU McKay School of Education
   from: Mar 2018
   to: June 2019
   location: Provo, UT
-  description: Developed a web application to automate and standardize the advisement of over 70,000 students<br>
-               Restructured the back-end system used to distribute millions of dollars of scholarship money<br>
-               Enhanced the security of 6 websites by implementing end-to-end encryption
+  description: 
+    - Developed a web application to automate and standardize the advisement of over 70,000 students
+    - Restructured the back-end system used to distribute millions of dollars of scholarship money
+    - Enhanced the security of 6 websites by implementing end-to-end encryption
     
 - title: Volunteer Representative
   subtitle: Church of Jesus Christ of Latter-day Saints
   from: Oct 2015
   to: Oct 2017
   location: Indianapolis, IN
-  description: Improved communication and interpersonal skills by interacting with over 50 people weekly<br>
-               Supervised and provided effective training for up to 40 representatives each week<br>
-               Worked in teams to provide service for people in the local communities
+  description: 
+    - Improved communication and interpersonal skills by interacting with over 50 people weekly
+    - Supervised and provided effective training for up to 40 representatives each week
+    - Worked in teams to provide service for people in the local communities

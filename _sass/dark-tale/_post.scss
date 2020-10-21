@@ -42,6 +42,13 @@
     top: 50%;
     left: 50%;
     transform: translate(20%,-300%);
+
+    @media (max-width: 600px) {
+      width: 7rem;
+      top: -10%;
+      left: 52%;
+      transform: translate(0,0);
+    }
   }
 
   &-arrow-wife {
@@ -50,11 +57,15 @@
     top: 50%;
     left: 50%;
     transform: translate(-155%,-140%);
+
+    @media (max-width: 750px) {
+      visibility: hidden;
+      display: none;
+    }
   }
 
   p {
     margin: 0 0 1rem;
-    text-align: justify;
   }
 
   a:hover {
@@ -72,5 +83,22 @@
     font-size: 0.9rem;
     font-style: normal;
     text-align: center;
+  }
+
+  button {
+    display: block;
+    border: 1px solid $default-color;
+    background: none;
+    box-shadow: none;
+    border-radius: 4px;
+    font-family: $sans-serif;
+    color: $default-color;
+    font-size: 2rem;
+    margin: 1rem auto;
+    cursor: pointer;
+  }
+
+  button:active {
+    border: 1px solid $default-shade;
   }
 }
