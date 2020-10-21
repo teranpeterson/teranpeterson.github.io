@@ -13,16 +13,18 @@ layout: default
         <div class="timeline-item">
             <div class="timeline-item-content">
                 <div class="row">
-                    <div class="column">
+                    <div class="columnl">
                         <h1 class="timeline-item-title">{{ item.title }}</h1>
                         <h3 class="timeline-item-subtitle">{{ item.subtitle }}</h3>
                     </div>
-                    <div class="column" style="text-align: right; padding-top: 20px;">
+                    <div class="columnr">
                         <h3 class="timeline-item-location">{{ item.location }}</h3>
                         <time class="timeline-item-subtitle">{{ item.from }} - {{ item.to }}</time>
                     </div>
                 </div>
-                <p>{{ item.description }}</p>
+                {% for line in item.description %}
+                <p class="timeline-item-desc">{{ line }}</p>
+                {% endfor %}
             </div>
         </div>
         {% endfor %}

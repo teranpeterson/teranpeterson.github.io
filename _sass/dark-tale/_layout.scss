@@ -108,18 +108,18 @@ footer {
   font-family: $sans-serif;
 
   &-subtitle {
-    font-size: 1rem;
+    font-size: 2rem;
 
-    @media (min-width: 600px) {
-      font-size: 2rem;
+    @media (max-width: 600px) {
+      font-size: 1rem;
     }
   }
 
   &-title {
-    font-size: 4rem;
+    font-size: 8rem;
 
-    @media (min-width: 600px) {
-      font-size: 8rem;
+    @media (max-width: 600px) {
+      font-size: 4rem;
     }
   }
 }
