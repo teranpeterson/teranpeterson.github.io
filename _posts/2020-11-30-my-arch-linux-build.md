@@ -4,6 +4,12 @@ title:  "My Arch Linux Build"
 author: "Teran"
 ---
 
+My first dive into Linux was when I was 14 or 15. I had been trolling through a bunch of hacking tutorials and forums for a few years and kept hearing about BackTrack Linux. The OG hacking distro (precursor to Kali). Back then, all I knew about Linux was that it was some alternative to Windows that hackers used. It fascinated me. I read and watched everything I could find about it. I couldn't believe the number of hacking tools it came with! I eventually decided to give it a go. Following their wiki, I was able to create a persistent, live USB that I could boot up to on my computer. I immediately ran a brunch of programs and turned into the worlds wimpiest script kitty. I eventually managed to man-in-the-middle my dad's computer and crack the WiFi password (that I already knew). 
+
+Several dual boots later, a misaligned MBR that I had to repair, countless broken Linux installs, and an insane number of live USBs, and I was comfortably running BackTrack along side Windows on by crappy high school Acer NetBook. Just like the pro hackers! I quickly lost interest in the hacking tools, drawn instead to the world of Linux. I became a distro hopping fiend, trying every flavor of Linux I could get my hands on. I learned how to use VirtualBox to save myself the hundreds of minute long reboots and quickly became familiar with much of the Linux jargon. 
+
+And then it happened. 11th grade rolled around and I was issued a school MacBook. The Acer was handed down to my sister and I was left, stuck between the confines of school bureaucracy and Apple restrictions. It wasn't until the end of my senior year (when I no longer cared if my computer broke), that I took the weeks long plunge into dual booting Linux on my MacBook. I dug through countless tutorials trying to get the install to work on my computer. I discovered rEFIt (now rEFInd), 
+
 It is time. Time for me to really give arch a go. 
 
 Doing this with EFI boot in Virtual Box (Virtual Box settings)
@@ -81,7 +87,7 @@ Ignoring /dev/loop0
 `mount /dev/sda1 /mnt/boot`
 
 # Install Arch
-`pacstrap /mnt base btrfs-progs linux linux-firmware intel-ucode grub vim efibootmgr`
+`pacstrap /mnt base btrfs-progs linux linux-firmware intel-ucode grub vim efibootmgr net-tools iproute2 iw dialog dhcpcd`
 `genfstab -L -p /mnt >> /mnt/etc/fstab`
 `cat /mnt/etc/fstab`
 
