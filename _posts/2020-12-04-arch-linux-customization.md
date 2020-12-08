@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "My Arch Linux Build"
+title:  "Arch Customization"
 author: "Teran"
 ---
 
