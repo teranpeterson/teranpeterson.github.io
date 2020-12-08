@@ -4,106 +4,215 @@ title:  "My Arch Linux Build"
 author: "Teran"
 ---
 
-My first dive into Linux was when I was 14 or 15. I had been trolling through a bunch of hacking tutorials and forums for a few years and kept hearing about BackTrack Linux. The OG hacking distro (precursor to Kali). Back then, all I knew about Linux was that it was some alternative to Windows that hackers used. It fascinated me. I read and watched everything I could find about it. I couldn't believe the number of hacking tools it came with! I eventually decided to give it a go. Following their wiki, I was able to create a persistent, live USB that I could boot up to on my computer. I immediately ran a brunch of programs and turned into the worlds wimpiest script kitty. I eventually managed to man-in-the-middle my dad's computer and crack the WiFi password (that I already knew). 
+My first dive into Linux was when I was 14 or 15 years old. I had been following a bunch of hacking forums for years and kept hearing about "BackTrack Linux" (the OG hacking distro, precursor to Kali). Back then, all I knew about Linux was that it was some alternative to Windows that hackers used. It fascinated me. I read and watched everything I could find about it. I couldn't believe that it was free! I couldn't believe the number of hacking tools it came with! In my young mind, all it would took to become a hacker was installing BackTrack. Following their wiki, I was able to create a persistent, live USB that I could boot to on my computer. Naturally, I immediately ran a brunch of programs and turned into the worlds wimpiest script kitty. With some practice, I managed to man-in-the-middle my dad's computer and crack the WiFi password (that I already knew). That was about as far as my hacking career went.
 
-Several dual boots later, a misaligned MBR that I had to repair, countless broken Linux installs, and an insane number of live USBs, and I was comfortably running BackTrack along side Windows on by crappy high school Acer NetBook. Just like the pro hackers! I quickly lost interest in the hacking tools, drawn instead to the world of Linux. I became a distro hopping fiend, trying every flavor of Linux I could get my hands on. I learned how to use VirtualBox to save myself the hundreds of minute long reboots and quickly became familiar with much of the Linux jargon. 
+After several attempted dual boots, a misaligned Windows partition, and countless broken installs, I was comfortably running BackTrack along side Windows on by crappy, high school Acer NetBook. Just like the pros! I quickly lost interest in hacking, drawn instead to the world of Linux. I became a distro hopping fiend, trying every flavor of Linux I could get my hands on. I created an insane number of live USBs and eventually learned how to use VirtualBox to avoid my computer's minute-long reboots. I was well on my way to becoming a Linux master!
 
-And then it happened. 11th grade rolled around and I was issued a school MacBook. The Acer was handed down to my sister and I was left, stuck between the confines of school bureaucracy and Apple restrictions. It wasn't until the end of my senior year (when I no longer cared if my computer broke), that I took the weeks long plunge into dual booting Linux on my MacBook. I dug through countless tutorials trying to get the install to work on my computer. I discovered rEFIt (now rEFInd), 
+And then it happened. 11th grade rolled around and I was issued a school computer. A MacBook, filled to the brim with parental controls and monitoring software. The Acer was handed down to my sister and I was left, stuck between the confines of the school's IT department and the Apple ecosystem. It wasn't until the end of my senior year (when I no longer cared if my computer broke), that I took the weeks long plunge into dual booting Linux on my MacBook. I spent many hours reading through tutorials and man pages, trying to figure out how to boot to a live USB. Once I got that working, I stumbled upon rEFIt (now rEFInd), which unlocked the boot loader and allowed me to successfully install Linux!
 
-It is time. Time for me to really give arch a go. 
+# TODO: No roll around, rewrite past tense
+College rolled around and I abandoned the security of Windows all together, switching to Linux as my main operating system. It has been a journey trying to keep everything running smoothly. The NVida card that came with my new Dell didn't help. I came to favor Ubuntu's LTS releases, since they offered stability and compatibility with most of the software my classes required. 
 
-Doing this with EFI boot in Virtual Box (Virtual Box settings)
+# TODO: Maybe a transition passage here?
+Now that I have some solid years of Linux experience under my belt, it is time. Time for me to take the rite of passage and install Arch Linux. Below I will outline the _exact_ steps I use for this process, partly for your benefit, dear reader, but mostly so that I can replicate them if it ever falls apart. I will detail the steps I use for customizing it in another post. 
 
 # Goals
 
-BTRFS, ARCH, i3, ZSH, ENCRYPTED
+* BTRFS filesystem
+* LUKS encryption
+* SSD support
+* Swap partition
+* ZSH shell with Oh-My-ZSH
+* NVidia support
 
-512MB EFI
-4GB Swap
-500GB Root
+# Pre-Installation
 
-# Pre-Instalation
+## Internet
 
-### Internet
+First thing first, we need internet. I use Ethernet so I didn't have to configure anything. If you are using WiFi, follow [these](https://wiki.archlinux.org/index.php/Iwd#iwctl) steps. Run the following to make sure we are connected:
+{% highlight bash %}
+ping archlinux.org
+{% endhighlight %}
 
-`ip link`
-`iwctl`
-I didn't have to touch this in VBOX
-`ping archlinux.org`
+## Partitioning Disks
 
-### Disks
+Next we need to partition our hard drive. I will be setting up three partitions, as displayed in the table below. 
 
-`fdisk -l`
-/dev/sda
-Ignoring /dev/loop0
+|---
+| Mount point | Partition | Type       | Filesystem | Size   |
+|---
+| /mnt/boot   | /dev/sda1 | EFI System | FAT32      | 550 MB |
+| [swap]      | /dev/sda2 | Linux swap | SWAP       | 4 GB   |
+| /mnt        | /dev/sda3 | Linux      | BTRFS      | 507 GB |
 
-`fdisk /dev/sda`
-`g`
+The first partition is the boot partition. This is required for EFI boot and for performance reasons, it must remain unencrypted. Secure boot can be used to ensure it is not tampered with. 
 
-`n``default number``default first sector``+550M`
-`n``default number``default first sector``+4G`
-`n``default number``default first sector``default last sector`
+Second we have the swap partition. Technically, this isn't required, but I am including a couple of gigs for old fashioned programs that write to it. 
 
-`t``1``1` for EFI
-`t``2``19` for Swap
+Last is our root partition. This will be were Linux is installed. Because we are using BTRFS, we will be dividing it into subvolumes _before_ installing. 
 
-`p` to check
-`w` to write
+Run the following to display the available hard drives:
+{% highlight bash %}
+fdisk -l
+{% endhighlight %}
+I only have one SSD I will be installing to. Eventually, I will update this for installing two drives with RAID1. My drive is `/dev/sda`. Replace all occurrences of this with the name of your drive below. 
 
-`mkfs.fat -F32 -n EFI /dev/sda1`
+**NOTE:** Ignore any `loopx` devices. 
 
-`modinfo dm_crypt`
+Open the device for editing: 
+{% highlight bash %}
+fdisk /dev/sda
+{% endhighlight %}
+Create a GPT partition table: `g`.
+Create the EFI partition: `n, default number, default first sector, +550M`.
+Create the swap partition: `n, default number, default first sector, +4G`.
+Create the root partition: `n, default number, default first sector, default last sector`.
 
-`cryptsetup benchmark`
+Now we need to set the partition types. This only sets a flag on the partition, it does _not_ create the file systems. We'll do that next. Set the first partition to EFI: `t, 1, 1`. Set the second partition to swap: `t, 2, 19`. You can see a list of partition types and their codes by running `l`. 
 
-`cryptsetup --type luks1 --align-payload=8192 -s 256 -c aes-xts-plain64 luksFormat /dev/sda3`
+Now that we have all of the partitions set up, run `p` to print the planned partition table. Once you are satisfied that everything looks correct, run `w` to write the changes. 
 
-`cryptsetup open /dev/sda3 cryptarch`
+## Create Filesystems
 
-`cryptsetup open --type plain --key-file /dev/urandom /dev/sda2 cryptswap`
+We'll start out by setting the EFI partition to FAT32. 
+{% highlight bash %}
+mkfs.fat -F32 -n EFI /dev/sda1
+{% endhighlight %}
 
-`mkswap -L swap /dev/mapper/cryptswap`
+Before we encrypt the swap and root partitions, we need to find the encryption algorithm that runs the best on our hardware. Most modern CPUs have built-in support for certain algorithms. To find this, run the following and choose the top option. 
+{% highlight bash %}
+cryptsetup benchmark
+{% endhighlight %}
 
-`swapon -L swap`
 
-`mkfs.btrfs --force -L arch /dev/mapper/cryptarch`
+{% highlight bash %}
+cryptsetup --type luks1 --align-payload=8192 -s 256 -c aes-xts-plain64 luksFormat /dev/sda3
+{% endhighlight %}
 
-`mount -t btrfs /dev/mapper/cryptarch /mnt`
-`btrfs subvolume create /mnt/root`
-`btrfs subvolume create /mnt/home`
-`btrfs subvolume create /mnt/snapshots`
-`umount -R /mnt`
+{% highlight bash %}
+cryptsetup open /dev/sda3 cryptarch
+{% endhighlight %}
 
-`o=defaults,x-mount.mkdir`
-`o_btrfs=$o,compress=lzo,ssd,noatime`
+{% highlight bash %}
+cryptsetup open --type plain --key-file /dev/urandom /dev/sda2 cryptswap
+{% endhighlight %}
 
-`mount -t btrfs -o subvol=root,$o_btrfs /dev/mapper/cryptarch /mnt`
-`mkdir /mnt/home`
-`mkdir /mnt/.snapshots`
-`mount -t btrfs -o subvol=home,$o_btrfs /dev/mapper/cryptarch /mnt/home`
-`mount -t btrfs -o subvol=snapshots,$o_btrfs /dev/mapper/cryptarch /mnt/.snapshots`
+{% highlight bash %}
+mkswap -L swap /dev/mapper/cryptswap
+{% endhighlight %}
 
-`mkdir /mnt/boot`
-`mount /dev/sda1 /mnt/boot`
+{% highlight bash %}
+swapon -L swap
+{% endhighlight %}
+
+{% highlight bash %}
+mkfs.btrfs --force -L arch /dev/mapper/cryptarch
+{% endhighlight %}
+
+{% highlight bash %}
+mount -t btrfs /dev/mapper/cryptarch /mnt
+{% endhighlight %}
+
+{% highlight bash %}
+btrfs subvolume create /mnt/root
+{% endhighlight %}
+
+{% highlight bash %}
+btrfs subvolume create /mnt/home
+{% endhighlight %}
+
+{% highlight bash %}
+btrfs subvolume create /mnt/snapshots
+{% endhighlight %}
+
+{% highlight bash %}
+umount -R /mnt
+{% endhighlight %}
+
+{% highlight bash %}
+o=defaults,x-mount.mkdir
+{% endhighlight %}
+
+{% highlight bash %}
+o_btrfs=$o,compress=lzo,ssd,noatime
+{% endhighlight %}
+
+{% highlight bash %}
+mount -t btrfs -o subvol=root,$o_btrfs /dev/mapper/cryptarch /mnt
+{% endhighlight %}
+
+{% highlight bash %}
+mkdir /mnt/home
+{% endhighlight %}
+
+{% highlight bash %}
+mkdir /mnt/.snapshots
+{% endhighlight %}
+
+{% highlight bash %}
+mount -t btrfs -o subvol=home,$o_btrfs /dev/mapper/cryptarch /mnt/home
+{% endhighlight %}
+
+{% highlight bash %}
+mount -t btrfs -o subvol=snapshots,$o_btrfs /dev/mapper/cryptarch /mnt/.snapshots
+{% endhighlight %}
+
+{% highlight bash %}
+mkdir /mnt/boot
+{% endhighlight %}
+
+{% highlight bash %}
+mount /dev/sda1 /mnt/boot
+{% endhighlight %}
 
 # Install Arch
-`pacstrap /mnt base btrfs-progs linux linux-firmware intel-ucode grub vim efibootmgr net-tools iproute2 iw dialog dhcpcd`
-`genfstab -L -p /mnt >> /mnt/etc/fstab`
-`cat /mnt/etc/fstab`
+{% highlight bash %}
+pacstrap /mnt base btrfs-progs linux linux-firmware intel-ucode grub vim efibootmgr net-tools iproute2 iw dialog dhcpcd
+{% endhighlight %}
 
-Check `vim /mnt/etc/fstab`
+{% highlight bash %}
+genfstab -L -p /mnt >> /mnt/etc/fstab
+{% endhighlight %}
+
+{% highlight bash %}
+cat /mnt/etc/fstab
+{% endhighlight %}
+
+Check 
+{% highlight bash %}
+vim /mnt/etc/fstab
+{% endhighlight %}
 
 
-`arch-chroot /mnt`
+{% highlight bash %}
+arch-chroot /mnt
+{% endhighlight %}
 
-`ln -sf /usr/share/zoneinfo/America/Denver /etc/localtime`
-`hwclock --systohc`
+{% highlight bash %}
+ln -sf /usr/share/zoneinfo/America/Denver /etc/localtime
+{% endhighlight %}
 
-`vim /etc/locale.gen`
+{% highlight bash %}
+hwclock --systohc
+{% endhighlight %}
+
+{% highlight bash %}
+vim /etc/locale.gen
+{% endhighlight %}
+
 Uncomment `en_US.UTF-8`
-`locale-gen`
-`echo LANG=en_US.utf8 >> /etc/locale.conf`
-`echo LANGUAGE=en_US >> /etc/locale.conf`
+
+{% highlight bash %}
+locale-gen
+{% endhighlight %}
+
+{% highlight bash %}
+echo LANG=en_US.utf8 >> /etc/locale.conf
+{% endhighlight %}
+
+{% highlight bash %}
+echo LANGUAGE=en_US >> /etc/locale.conf
+{% endhighlight %}
 
 `echo KEYMAP=es >> /etc/vconsole.conf`
 

@@ -44,3 +44,7 @@ pre code {
     user-select: none;
   }
 }
+
+.language-bash:before {
+  content: "$ ";
+}

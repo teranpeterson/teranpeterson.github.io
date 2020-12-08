@@ -69,5 +69,28 @@ img {
 }
 
 td {
-  vertical-align: top;
+  border: 1px solid $default-grey;
+  padding: 8px;
+}
+
+th {
+  border: 1px solid $default-grey;
+  padding: 8px;
+}
+
+tr:nth-child(even){background-color: $default-background;}
+
+table {
+  border-collapse: collapse;
+  border: 1px solid $default-grey;
+  background-color: $default-accent;
+  margin-bottom: 1.2rem;
+}
+
+tfoot {
+  border-top: 4px solid $default-grey;
+}
+
+tbody {
+  border-top: 4px solid $default-grey;
 }
