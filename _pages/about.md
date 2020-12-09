@@ -1,6 +1,8 @@
 ---
 layout: about
 title: "About"
+image: "/assets/me.jpg"
+description: "A little about me"
 permalink: /about/
 ---
 

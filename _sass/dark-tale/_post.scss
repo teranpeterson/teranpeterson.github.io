@@ -7,7 +7,7 @@
   
   &-info {
     color: $default-grey;
-    font-family: $font-serif-secondary;
+    font-family: $font-serif;
     letter-spacing: 0.5px;
     text-align: center;
 
@@ -100,5 +100,10 @@
 
   button:active {
     border: 1px solid $default-shade;
+  }
+
+  button:hover {
+    background-color: $default-shade;
+    color: $default-background;
   }
 }

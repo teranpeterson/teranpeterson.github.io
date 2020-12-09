@@ -1,5 +1,8 @@
 ---
 layout: default
+title: "Blog"
+image: "https://img.pngio.com/blog-icon-it-is-a-typewriter-with-dots-instead-of-letters-for-the-typewriter-blog-png-1600_1600.png"
+description: "My blog"
 ---
 
 <main>
@@ -12,7 +15,7 @@ layout: default
         <div class="catalogue-line"></div>
 
         <p>
-          {{ post.content | strip_html | truncatewords: 30 }}
+          {{ post.content | strip_html | truncatewords: 50 }}
         </p>
 
       </div>
