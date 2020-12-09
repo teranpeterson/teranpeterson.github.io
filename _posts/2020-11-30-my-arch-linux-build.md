@@ -1,10 +1,13 @@
 ---
 layout: post
 title:  "My Arch Linux Build"
+image: "/assets/arch-btrfs.png"
+description: "Encrypted BTRFS Arch linux installation"
 author: "Teran"
 ---
 
-<div id="text"></div>
+![Arch and BTRFS Icon](/assets/arch-btrfs.png)
+
 
 My first dive into Linux was when I was 14 or 15 years old. I had been following a bunch of hacking forums for years and kept hearing about "BackTrack Linux" (the OG hacking distro, precursor to Kali). Back then, all I knew about Linux was that it was some alternative to Windows that hackers used. It fascinated me. I read and watched everything I could find about it. I couldn't believe that it was free! I couldn't believe the number of hacking tools it came with! In my young mind, all it would took to become a hacker was installing BackTrack. Following their wiki, I was able to create a persistent, live USB that I could boot to on my computer. Naturally, I immediately ran a brunch of programs and turned into the worlds wimpiest script kitty. With some practice, I managed to man-in-the-middle my dad's computer and crack the WiFi password (that I already knew). That was about as far as my hacking career went.
 
@@ -12,10 +15,8 @@ After several attempted dual boots, a misaligned Windows partition, and countles
 
 And then it happened. 11th grade rolled around and I was issued a school computer. A MacBook, filled to the brim with parental controls and monitoring software. The Acer was handed down to my sister and I was left, stuck between the confines of the school's IT department and the Apple ecosystem. It wasn't until the end of my senior year (when I no longer cared if my computer broke), that I took the weeks long plunge into dual booting Linux on my MacBook. I spent many hours reading through tutorials and man pages, trying to figure out how to boot to a live USB. Once I got that working, I stumbled upon rEFIt (now rEFInd), which unlocked the boot loader and allowed me to successfully install Linux!
 
-# TODO: No roll around, rewrite past tense
 College rolled around and I abandoned the security of Windows all together, switching to Linux as my main operating system. It has been a journey trying to keep everything running smoothly. The NVida card that came with my new Dell didn't help. I came to favor Ubuntu's LTS releases, since they offered stability and compatibility with most of the software my classes required. 
 
-# TODO: Maybe a transition passage here?
 Now that I have some solid years of Linux experience under my belt, it is time. Time for me to take the rite of passage and install Arch Linux. Below I will outline the _exact_ steps I use for this process, partly for your benefit, dear reader, but mostly so that I can replicate them if it ever falls apart. I will detail the steps I use for customizing it in another post. 
 
 # Goals

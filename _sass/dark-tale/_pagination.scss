@@ -1,5 +1,5 @@
 .pagination {
-  font-family: $font-serif-secondary;
+  font-family: $font-serif;
   padding-top: 2rem;
   position: relative;
   text-align: center;
@@ -11,7 +11,7 @@
   span {
     color: $default-shade;
     font-size: 1.3rem;
-    font-family: $font-serif-secondary;
+    font-family: $font-serif;
   }
 
   .arrow {
