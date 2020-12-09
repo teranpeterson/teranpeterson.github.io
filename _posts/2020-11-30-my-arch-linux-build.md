@@ -93,7 +93,7 @@ cryptsetup --type luks1 --align-payload=8192 -s 256 -c aes-xts-plain64 luksForma
 cryptsetup open /dev/sda3 cryptarch
 {% endhighlight %}
 
-We are also encrypting the swap partition. Then we create swap file system and turn it on. 
+We are also encrypting the swap partition.
 {% highlight bash %}
 cryptsetup open --type plain --key-file /dev/urandom /dev/sda2 cryptswap
 mkswap -L swap /dev/mapper/cryptswap
@@ -123,16 +123,19 @@ btrfs subvolume create /mnt/snapshots
 umount -R /mnt
 {% endhighlight %}
 
-In order to correctly install linux, we need to remount each subvolume to the correct path with-in the system. For example, we want to mount the home partition at /home, so that all of the linux files for home are written there. 
-
+In order to correctly install linux, we need to remount each subvolume to the correct path within the system. For example, we want to mount the home subvolume at /home, so that all of the linux files for home are written there. First we need to create the mount locations. 
 {% highlight bash %}
-o=defaults,x-mount.mkdir
-o_btrfs=$o,compress=lzo,ssd,noatime
 mkdir /mnt/home
 mkdir /mnt/.snapshots
 mkdir /mnt/boot
 {% endhighlight %}
 
+When we mount the subvolumes, we will be using the following options. We want to use lzo compression since it is the fastest. We set ssd so that it is optimized for our hard drive. And we use noatime because btrfs requires it. 
+{% highlight bash %}
+o_btrfs=defaults,compress=lzo,ssd,noatime
+{%endhighlight %}
+
+Now we mount our subvolumes. We will be using /mnt as the base for our install, which is where we will mount the root subvolume. The home subvolume will be mounted to /mnt/home. The snapshot subvolume will be mounted to the hidden directory /mnt/.snapshots. And lastly, the EFI boot partition we made previously will be mounted to /mnt/boot. 
 {% highlight bash %}
 mount -t btrfs -o subvol=root,$o_btrfs /dev/mapper/cryptarch /mnt
 mount -t btrfs -o subvol=home,$o_btrfs /dev/mapper/cryptarch /mnt/home
@@ -140,86 +143,127 @@ mount -t btrfs -o subvol=snapshots,$o_btrfs /dev/mapper/cryptarch /mnt/.snapshot
 mount /dev/sda1 /mnt/boot
 {% endhighlight %}
 
+We are now ready to install Arch! 
+
 # Installation
 
 ## Install Arch
+To install, we are just running pacstrap. Most tutorials only list `base` in the pacstrap install. **These are outdated**. Base no longer includes the linux package. Here we are installing base, linux and linux-firmware. We are also installing support for btrfs (btrfs-progs), my Intel CPU (intel-ucode), grub (grub and efibootmgr), networking (iroute2 and dhcpcd) and of course vim. 
 {% highlight bash %}
-pacstrap /mnt base btrfs-progs linux linux-firmware intel-ucode grub vim efibootmgr net-tools iproute2 iw dialog dhcpcd
+pacstrap /mnt base btrfs-progs linux linux-firmware intel-ucode grub efibootmgr iproute2 dhcpcd vim
 {% endhighlight %}
 
-
-## Configure System
+We need to generate /etc/fstab so that our system knows what to mount each time we boot. In our case, all of the BTRFS subvolumes and the swap partition. Luckily, a utility exists for generating this for us: 
 {% highlight bash %}
 genfstab -L -p /mnt >> /mnt/etc/fstab
 vim /mnt/etc/fstab
 {% endhighlight %}
 
+## Configure System
+Now that everything is installed, we are going to chroot into the system to configure Arch. Chroot allows us to run commands as if we were booted into the system. 
 {% highlight bash %}
 arch-chroot /mnt
 {% endhighlight %}
 
+Set the timezone to your location:
 {% highlight bash %}
 ln -sf /usr/share/zoneinfo/America/Denver /etc/localtime
 {% endhighlight %}
 
+Set the hardware clock:
 {% highlight bash %}
 hwclock --systohc
 {% endhighlight %}
 
+Set your locale by editing the following file and uncommenting the correct line (in my case `en_US.UTF-8`):
 {% highlight bash %}
 vim /etc/locale.gen
-{% endhighlight %}
-
-Uncomment `en_US.UTF-8`
-
-{% highlight bash %}
 locale-gen
 {% endhighlight %}
 
+Create a locale configuration file:
 {% highlight bash %}
 echo LANG=en_US.utf8 >> /etc/locale.conf
-{% endhighlight %}
-
-{% highlight bash %}
 echo LANGUAGE=en_US >> /etc/locale.conf
 {% endhighlight %}
 
-`echo KEYMAP=es >> /etc/vconsole.conf`
+Set your keyboard layout:
+{% highlight bash %}
+echo KEYMAP=us >> /etc/vconsole.conf
+{% endhighlight %}
 
-`echo arch >> /etc/hostname`
-`echo "127.0.1.1    arch.localdomain    arch" >> /etc/hosts`
+Set your hostname:
+{% highlight bash %}
+echo arch >> /etc/hostname
+{% endhighlight %}
 
-`passwd`
+Configure /etc/hosts as below:
+{% highlight shell %}
+127.0.0.1       localhost
+::1             localhost
+127.0.1.1       arch
+{% endhighlight %}
+
+Set the root password:
+{% highlight bash %}
+passwd
+{% endhighlight %}
 
 ## Fix Boot Settings
+In order to get our system to boot properly with btrfs, we need to add `encrypt` and `btrfs` to initramfs HOOKS:
+{% highlight bash %}
+vim /etc/mkinitcpio.conf
+mkinitcpio -p linux
+{% endhighlight %}
 
-`vim /etc/mkinitcpio.conf`
-Add `encrypt` and `btrfs` to HOOKS
-`mkinitcpio -p linux`
-
-`vim /etc/crypttab`
+We also need to add our swap partition to /etc/crypttab so that it is properly decrypted during boot:
+{% highlight bash %}
+vim /etc/crypttab
+{% endhighlight %}
 Add `swap   /dev/sda2       /dev/urandom        swap,offset=2048,cipher=aes-xts-plain64,size=256`
 
 ## Install Grub
+Last thing we need to do to set up our system is installing Grub. Right now, Grub is the only boot loader with support for encrypted BTRFS. 
+{% highlight bash %}
+vim /etc/default/grub
+{% endhighlight %}
 
-Edit `/etc/default/grub`, add `GRUB_ENABLE_CRYPTODISK=y` and `GRUB_DISABLE_SUBMENU=y`
-`GRUB_CMDLINE_LINUX="cryptdevice=/dev/sda3:cryptarch:allow-discards"`
-`grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB`
-`grub-mkconfig -o /boot/grub/grub.cfg`
+{% highlight shell %}
+GRUB_ENABLE_CRYPTODISK=y
+GRUB_DISABLE_SUBMENU=y
+GRUB_CMDLINE_LINUX="cryptdevice=/dev/sda3:cryptarch:allow-discards"
+{% endhighlight %}
 
+{% highlight bash %}
+grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
+grub-mkconfig -o /boot/grub/grub.cfg
+{% endhighlight %}
 
 ## Reboot
-`exit`
-`umount -R /mnt`
-`reboot`
-
+And now we reboot...
+{% highlight bash %}
+exit
+umount -R /mnt
+reboot
+{% endhighlight %}
 
 ## Verify Install
-`findmnt -nt btrfs`
-`btrfs subvolume snapshot / /.snapshots/2020-12-03`
-`ls .snapshots`
-`btrfs subvolume list /`
+If the system booted in under a minute, then everything should be set up correctly with LUKS. Lets check that all three of our BTRFS subvolumes are mounted:
+{% highlight bash %}
+findmnt -nt btrfs
+{% endhighlight %}
 
-`lsblk`
-Done!
+Lets also check that the swap partition unencrypted properly:
+{% highlight bash %}
+lsblk
+{% endhighlight %}
+
+Finally, lets take a snapshot of our brand new install before we accidentally ruin it:
+{% highlight bash %}
+btrfs subvolume snapshot / /.snapshots/2020-12-03
+ls .snapshots
+btrfs subvolume list /
+{% endhighlight %}
+
+Anddd we're done!
 Time to configure...
