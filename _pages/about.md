@@ -2,7 +2,7 @@
 layout: about
 title: "About"
 image: "/assets/me.jpg"
-description: "A little about me"
+description: "I have been fascinated with computers for as long as I can remember. I taught myself C++ at age 11 and learned Java soon after. I switched to Linux and built..."
 permalink: /about/
 ---
 

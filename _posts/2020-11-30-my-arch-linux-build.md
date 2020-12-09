@@ -2,12 +2,10 @@
 layout: post
 title:  "My Arch Linux Build"
 image: "/assets/arch-btrfs.png"
-description: "Encrypted BTRFS Arch linux installation"
+image-desc: "Arch plus BTRFS logos"
+description: "A definitive guide to installing Arch Linux on a BTRFS file system with full data LUKS encryption. Designed for modern computers with SSD and UEFI support."
 author: "Teran"
 ---
-
-![Arch and BTRFS Icon](/assets/arch-btrfs.png)
-
 
 My first dive into Linux was when I was 14 or 15 years old. I had been following a bunch of hacking forums for years and kept hearing about "BackTrack Linux" (the OG hacking distro, precursor to Kali). Back then, all I knew about Linux was that it was some alternative to Windows that hackers used. It fascinated me. I read and watched everything I could find about it. I couldn't believe that it was free! I couldn't believe the number of hacking tools it came with! In my young mind, all it would took to become a hacker was installing BackTrack. Following their wiki, I was able to create a persistent, live USB that I could boot to on my computer. Naturally, I immediately ran a brunch of programs and turned into the worlds wimpiest script kitty. With some practice, I managed to man-in-the-middle my dad's computer and crack the WiFi password (that I already knew). That was about as far as my hacking career went.
 
@@ -76,7 +74,7 @@ Now we need to set the partition types. This only sets a flag on the partition, 
 
 Now that we have all of the partitions set up, run `p` to print the planned partition table. Once you are satisfied that everything looks correct, run `w` to write the changes. 
 
-## Create Filesystems
+## Create File Systems
 
 We'll start out by creating a FAT32 file system on the boot partition. UEFI requires the partition be FAT12, FAT16 or FAT32 but I've never heard of anyone using anything other than FAT32. 
 {% highlight bash %}
@@ -88,7 +86,7 @@ Before we encrypt the swap and root partitions, we need to find the encryption a
 cryptsetup benchmark
 {% endhighlight %}
 
-My system has runs significantly faster with `aes-xts-plain64` so I will be using it for my install. If yours is different, replace it in the commands below. Now we want to set up luks on the root partition. We will be using `luks1` since GRUB does not yet support `luks2`. We will also be setting the alignment for better SSD support. 
+My system has runs significantly faster with `aes-xts-plain64` so I will be using it for my install. If yours is different, replace it in the commands below. Now we want to set up LUKS on the root partition. We will be using `LUKS1` since GRUB does not yet support `LUKS2`. We will also be setting the alignment for better SSD support. 
 {% highlight bash %}
 cryptsetup --type luks1 --align-payload=8192 -s 256 -c aes-xts-plain64 luksFormat /dev/sda3
 cryptsetup open /dev/sda3 cryptarch
@@ -149,7 +147,7 @@ We are now ready to install Arch!
 # Installation
 
 ## Install Arch
-To install, we are just running pacstrap. Most tutorials only list `base` in the pacstrap install. **These are outdated**. Base no longer includes the linux package. Here we are installing base, linux and linux-firmware. We are also installing support for btrfs (btrfs-progs), my Intel CPU (intel-ucode), grub (grub and efibootmgr), networking (iroute2 and dhcpcd) and of course vim. 
+To install, we are just running pacstrap. Most tutorials only list `base` in the pacstrap install. **These are outdated**. Base no longer includes the linux package. Here we are installing base, linux and linux-firmware. We are also installing support for btrfs (btrfs-progs), my Intel CPU (intel-ucode), grub (grub and efibootmgr), networking (iproute2 and dhcpcd) and of course vim. 
 {% highlight bash %}
 pacstrap /mnt base btrfs-progs linux linux-firmware intel-ucode grub efibootmgr iproute2 dhcpcd vim
 {% endhighlight %}
@@ -266,7 +264,6 @@ ls .snapshots
 btrfs subvolume list /
 {% endhighlight %}
 
-Anddd we're done!
-Time to configure...
+And we're done! Time to configure...
 
 _The end_
