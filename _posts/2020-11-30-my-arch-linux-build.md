@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "My Arch Linux Build"
-image: "/assets/arch-btrfs.png"
+image: "https://www.freepngimg.com/thumb/triangle/58926-tgz-arch-linux-free-download-png-hq.png"
 image-desc: "Arch plus BTRFS logos"
 description: "A definitive guide to installing Arch Linux on a BTRFS file system with full data LUKS encryption. Designed for modern computers with SSD and UEFI support."
 author: "Teran"
