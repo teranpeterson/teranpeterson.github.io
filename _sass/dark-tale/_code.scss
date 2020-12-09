@@ -1,6 +1,6 @@
 pre,
 code {
-  font-family: $monospaced;
+  font-family: $font-monospaced;
 }
 
 code {
@@ -31,7 +31,7 @@ pre code {
 
   pre {
     margin-bottom: 0;
-    overflow-x: auto;
+    overflow: auto;
   }
 
   .lineno {
@@ -43,4 +43,17 @@ pre code {
     -moz-user-select: none;
     user-select: none;
   }
+}
+
+.bash:before {
+  content: "$ ";
+}
+
+::-webkit-scrollbar {
+  width: .6em;
+  height: .6em;
+}
+::-webkit-scrollbar-thumb {
+  background-color: $default-background;
+  border-radius: 4px;
 }

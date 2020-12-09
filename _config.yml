@@ -27,6 +27,7 @@ plugins:
   - jekyll-feed
   - jekyll-paginate
   - jekyll-seo-tag
+  - jekyll-sitemap
 
 # Permalinks
 permalink:      /blog/:year-:month-:day/:title

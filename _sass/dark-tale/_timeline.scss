@@ -15,7 +15,7 @@
 
   &-item {
     position: relative;
-    font-family: $serif-primary;
+    font-family: $font-primary;
 
     &:after {
       content: "";
@@ -56,7 +56,7 @@
       margin-top: -5px;
       margin-bottom: 15px;
       color: $default-grey;
-      font-family: $serif-secondary;
+      font-family: $font-serif-secondary;
       letter-spacing: .5px;
     }
 

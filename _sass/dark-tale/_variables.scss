@@ -17,14 +17,15 @@ $code-tag-yellow: #dcdcaa;    // Tag yellow
 $code-string-orange: #ce9178; // String orange
 $code-keyword-purple: #c586c0;// Keyword purple
 $code-error-red: #f44747;     // Error red
-$code-regex-red: #d16969;     // Regex red
+$code-regex-red: #ff9670;     // Shell orange
 $code-regex-yellow: #d7ba7d;  // Regex yellow
 
 // Fonts
-$serif-primary: 'Libre Baskerville', 'Times New Roman', Times, serif;
-$serif-secondary: Palatino, 'Palatino LT STD', 'Palatino Linotype', 'Book Antiqua', 'Georgia', serif;
-$sans-serif: 'Raleway', sans-serif;
-$monospaced: Menlo, Monaco, monospace;
+$font-primary: 'Roboto', sans-serif;
+$font-serif-primary: 'Libre Baskerville', 'Times New Roman', Times, serif;
+$font-serif-secondary: Palatino, 'Palatino LT STD', 'Palatino Linotype', 'Book Antiqua', 'Georgia', serif;
+$font-sans-serif: 'Raleway', sans-serif;
+$font-monospaced: Menlo, Monaco, monospace;
 
 // Sizing
 @mixin box-sizing($type: border-box) {

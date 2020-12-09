@@ -13,7 +13,7 @@ body {
 }
 
 html {
-  font-family: $serif-primary;
+  font-family: $font-primary;
   font-size: 14px;
   overflow: scroll;
   overflow-x: hidden;
@@ -39,7 +39,7 @@ h4,
 h5,
 h6 {
   color: $default-shade;
-  font-family: $sans-serif;
+  font-family: $font-sans-serif;
   line-height: normal;
 }
 
@@ -68,6 +68,19 @@ img {
   max-width: 100%;
 }
 
-td {
-  vertical-align: top;
+td, th {
+  border: 1px solid $default-shade;
+  padding: 8px;
+}
+
+tr:nth-child(even){background-color: $default-background;}
+
+table {
+  border-collapse: collapse;
+  background-color: $default-accent;
+  margin-bottom: 1.2rem;
+}
+
+tfoot, tbody {
+  border-top: 4px solid $default-shade;
 }
