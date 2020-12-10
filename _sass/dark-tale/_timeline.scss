@@ -153,6 +153,11 @@
     -webkit-transform: rotate(-45deg) translateY(20px);
     width: 0;
 
+    @media (max-width: 600px) {
+      transform: rotate(-45deg) translateY(8px) translateX(-6px);
+      -webkit-transform: rotate(-45deg) translateY(8px) translateX(-6px);
+    }
+
     &:after {
       content: "";
       width: 12px;
@@ -164,6 +169,11 @@
       left: -28px;
       top: 3px;
       z-index: 10;
+
+      @media (max-width: 600px) {
+        width: 8px;
+        height: 8px;
+      }
     }
   }
 }
