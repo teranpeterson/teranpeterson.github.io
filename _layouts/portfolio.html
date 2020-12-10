@@ -6,8 +6,24 @@ layout: default
 <div class="post">
     <h1 class="post-title">{{ page.title }}</h1>
     <div class="post-line"></div>
-
     {{ content }}
+
+    <div class="project-grid">
+        {% for project in site.data.projects %}
+        <div><a href="{{ project.link }}">
+            <img src="{{ project.image }}" alt="{{ project.title }}">
+            <div class="overlay">
+                <h2>{{ project.title }}</h2>
+            </div>
+        </a></div>
+        {% endfor %}
+    </div>
+    <div class="skills">
+        {% for skill in site.data.skills %}
+        <div><p>{{ skill }}</p></div>
+        {% endfor %}
+    </div>
+    <div class="spacer"></div>
     <div class="timeline">
         {% for item in site.data.timeline %}
         <div class="timeline-item">

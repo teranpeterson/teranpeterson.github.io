@@ -110,5 +110,6 @@
   button:hover {
     background-color: $default-shade;
     color: $default-background;
+    transition: .3s all;
   }
 }
