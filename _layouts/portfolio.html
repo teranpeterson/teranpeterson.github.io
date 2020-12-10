@@ -19,8 +19,11 @@ layout: default
         {% endfor %}
     </div>
     <div class="skills">
-        
+        {% for skill in site.data.skills %}
+        <div><p>{{ skill }}</p></div>
+        {% endfor %}
     </div>
+    <div class="spacer"></div>
     <div class="timeline">
         {% for item in site.data.timeline %}
         <div class="timeline-item">
