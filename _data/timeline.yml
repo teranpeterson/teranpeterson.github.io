@@ -1,3 +1,11 @@
+- title: Software Engineer
+  subtitle: FPS Gold
+  from: January 2021
+  to: Present
+  location: Provo, UT
+  description:
+    - New job!
+
 - title: Student
   subtitle: Brigham Young University
   from: Jan 2018
@@ -11,7 +19,7 @@
 - title: Security Engineer
   subtitle: BYU Office of IT
   from: June 2019
-  to: Present
+  to: January 2021
   location: Provo, UT
   description: 
     - Engineered microservices to aggregate thousands of security events a minute from 4 large universities
