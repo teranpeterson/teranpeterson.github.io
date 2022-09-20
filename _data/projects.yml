@@ -1,7 +1,3 @@
 - title: Arch Build
-  image: https://www.freepngimg.com/thumb/triangle/58926-tgz-arch-linux-free-download-png-hq.png
+  image: /assets/arch.png
   link: /blog/2020-11-30/my-arch-linux-build
-
-- title: Home Server
-  image: https://hlassets.paessler.com/common/files/graphics/illustration/server-14-one-forth.png
-  link: /home-server

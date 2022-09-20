@@ -1,10 +1,20 @@
+- title: Student
+  subtitle: Georgia Institute of Technology
+  from: Aug 2022
+  to: Present
+  location: Atlanta, GA
+  description: 
+    - GPA - 4.00
+
 - title: Software Engineer
   subtitle: FPS Gold
-  from: January 2021
+  from: Jan 2021
   to: Present
   location: Provo, UT
   description:
-    - New job!
+    - Architect an advanced microservice system to facilitate worldwide online banking for millions of users
+    - Pioneered a new system to modernize over 30 mobile applications and streamline their release
+    - Improved the efficiency of team members by training on and implementing advanced debugging tools
 
 - title: Student
   subtitle: Brigham Young University
@@ -13,35 +23,23 @@
   location: Provo, UT
   description: 
     - GPA - 3.71
-    - Coursework - Advanced Programming, Algorithm Design, Computer Security, Programming Languages
-    - Clubs - IT Security, YHack, Computing Competitions
 
 - title: Security Engineer
   subtitle: BYU Office of IT
-  from: June 2019
-  to: January 2021
+  from: Jun 2019
+  to: Jan 2021
   location: Provo, UT
   description: 
     - Engineered microservices to aggregate thousands of security events a minute from 4 large universities
     - Created a set of automated scripts to increase analysts' response time to recurring security threats
     - Designed a continuous integration pipeline to maintain the quality and consistency of code deployments
 
-- title: Senior Web Developer
+- title: Software Engineer
   subtitle: BYU McKay School of Education
   from: Mar 2018
-  to: June 2019
+  to: Jun 2019
   location: Provo, UT
   description: 
     - Developed a web application to automate and standardize the advisement of over 70,000 students
     - Restructured the back-end system used to distribute millions of dollars of scholarship money
-    - Enhanced the security of 6 websites by implementing end-to-end encryption
-    
-- title: Volunteer Representative
-  subtitle: Church of Jesus Christ of Latter-day Saints
-  from: Oct 2015
-  to: Oct 2017
-  location: Indianapolis, IN
-  description: 
-    - Improved communication and interpersonal skills by interacting with over 50 people weekly
-    - Supervised and provided effective training for up to 40 representatives each week
-    - Worked in teams to provide service for people in the local communities
+    - Enhanced the security of 6 internal websites used to handle students' sensitive information
