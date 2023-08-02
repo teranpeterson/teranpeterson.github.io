@@ -4,12 +4,33 @@
   to: Present
   location: Atlanta, GA
   description: 
+    - MS in Computer Science
     - GPA - 4.00
+
+- title: Technical Consultant
+  subtitle: Freelance
+  from: Jan 2022
+  to: Present
+  location: Remote
+  description:
+    - Provide technical consultation and development to small startups
+    - Architected and developed a mobile app in Flutter for Anchor Support Services
+    - Prototyped a VR app in Unity with cloud support for Virtual Training Solutions
+
+- title: Senior Software Engineer
+  subtitle: FPS Gold
+  from: Feb 2023
+  to: Present
+  location: Remote
+  description:
+    - Leading a team of developers to create an advanced mobile banking app from scratch with Flutter
+    - Presented my latest work to over 100 clients at company conferences in 2022 and 2023
+    - Gave 20+ team trainings on topics such as API architecture, mobile development, and .NET infrastructure
 
 - title: Software Engineer
   subtitle: FPS Gold
   from: Jan 2021
-  to: Present
+  to: Feb 2023
   location: Provo, UT
   description:
     - Architect an advanced microservice system to facilitate worldwide online banking for millions of users
@@ -22,6 +43,7 @@
   to: Apr 2021
   location: Provo, UT
   description: 
+    - BS in Computer Science
     - GPA - 3.71
 
 - title: Security Engineer
