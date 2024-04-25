@@ -1,7 +1,7 @@
 # Site settings
 title:          Teran
 description:    "Software Engineer"
-url:            "https://teranpeterson.com"
+url:            "https://teranpeterson.github.io"
 
 # Google Analytics
 google_analytics: UA-125743006-1
@@ -9,8 +9,8 @@ google_analytics: UA-125743006-1
 # Author
 author:
   name:         Teran Peterson
-  url:          https://teranpeterson.com
-  email:        teran@teranpeterson.com
+  url:          https://teranpeterson.github.io
+  email:        teran@teranpeterson.github.io
 
 # Build settings
 markdown:       kramdown
