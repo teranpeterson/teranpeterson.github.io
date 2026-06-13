@@ -24,21 +24,20 @@
   });
 
   // Wrap each non-empty line of a bash block in <span class="bash"> so the CSS
-  // `$ ` prompt renders per line. Built with DOM nodes (no innerHTML) to stay
-  // safe against any special characters in the code.
+  // `$ ` prompt renders per line. Handles both Jekyll's {% highlight %} tag
+  // (code.language-bash) and Kramdown fenced blocks (.language-bash code).
+  // Splits innerHTML (not textContent) so Rouge's syntax highlighting survives;
+  // the content is build-time, Rouge-generated markup, not user input.
   function initBashPrompts() {
-    document.querySelectorAll('code.language-bash').forEach(function (block) {
-      var lines = block.textContent.split('\n').filter(function (l) {
-        return l.length > 0;
+    document.querySelectorAll('code.language-bash, .language-bash code').forEach(function (block) {
+      if (block.dataset.bashified) return;
+      var lines = block.innerHTML.split('\n').filter(function (l) {
+        return l.trim().length > 0;
       });
-      block.textContent = '';
-      lines.forEach(function (line, i) {
-        if (i > 0) block.appendChild(document.createTextNode('\n'));
-        var span = document.createElement('span');
-        span.className = 'bash';
-        span.textContent = line;
-        block.appendChild(span);
-      });
+      block.innerHTML = lines.map(function (line) {
+        return '<span class="bash">' + line + '</span>';
+      }).join('\n');
+      block.dataset.bashified = 'true';
     });
   }
 
@@ -64,9 +63,12 @@
     });
   }
 
-  // Add a "Copy" button to each fenced code block.
+  // Add a copy button to each code block. Covers Jekyll's {% highlight %} tag
+  // (figure.highlight) and Kramdown fenced blocks (div.highlight); both have a
+  // <pre> and are position:relative, so the absolutely-placed button anchors
+  // to either. The inner pre.highlight is excluded by the div/figure selector.
   function initCodeCopy() {
-    document.querySelectorAll('figure.highlight').forEach(function (fig) {
+    document.querySelectorAll('figure.highlight, div.highlight').forEach(function (fig) {
       if (!fig.querySelector('pre')) return;
 
       var btn = document.createElement('button');

@@ -3,6 +3,8 @@ layout: post
 title:  "My Arch Linux Build"
 image: "/assets/arch.png"
 image-desc: "Arch logo"
+image_width: 1200
+image_height: 1200
 description: "A definitive guide to installing Arch Linux on a BTRFS file system with full data LUKS encryption. Designed for modern computers with SSD and UEFI support."
 author: "Teran"
 tags:

@@ -3,6 +3,8 @@ layout: post
 title:  "A Weekend with Local LLMs"
 image: "https://picsum.photos/seed/llm/1200/500"
 image-desc: "Placeholder header image"
+image_width: 1200
+image_height: 500
 description: "Running an open-weight language model on my own machine — setup, performance, and surprises."
 author: "Teran"
 tags:

@@ -4,7 +4,7 @@ source "https://rubygems.org"
 # Gemfile is primarily for local development. The minimum versions below pull
 # in security fixes (rexml CVE-2024-39908 / kramdown 2.4 etc.).
 gem "jekyll", "~> 4.3"
-gem "jekyll-paginate"
+gem "jekyll-paginate-v2", "~> 3.0"
 gem "jekyll-seo-tag", "~> 2.8"
 gem "jekyll-sitemap", "~> 1.4"
 gem "kramdown", ">= 2.4.0"
@@ -13,6 +13,7 @@ gem "rexml", ">= 3.3.9"
 group :jekyll_plugins do
   gem "jekyll-feed", "~> 0.17"
   gem "jekyll-archives", "~> 2.3"
+  gem "jekyll-minifier", "~> 0.1"
 end
 
 # Lock `http_parser.rb` on Apple Silicon (older versions fail to build on M-series Macs).

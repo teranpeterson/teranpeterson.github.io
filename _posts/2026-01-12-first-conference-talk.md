@@ -3,6 +3,8 @@ layout: post
 title:  "Lessons from My First Conference Talk"
 image: "https://picsum.photos/seed/conference/1200/500"
 image-desc: "Placeholder header image"
+image_width: 1200
+image_height: 500
 description: "What I wish I'd known before standing in front of a room full of engineers."
 author: "Teran"
 tags:

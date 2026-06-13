@@ -3,6 +3,8 @@ layout: post
 title:  "Containerizing a .NET Service"
 image: "https://picsum.photos/seed/docker/1200/500"
 image-desc: "Placeholder header image"
+image_width: 1200
+image_height: 500
 description: "Packaging a small ASP.NET Core API into a lean container image with a multi-stage build."
 author: "Teran"
 tags:

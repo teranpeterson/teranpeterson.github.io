@@ -16,6 +16,8 @@
     A from-scratch Arch install on BTRFS with full-disk LUKS encryption,
     tuned for modern UEFI laptops. Read the write-ups and related posts.
   image: /assets/arch.png
+  image_width: 1200
+  image_height: 1200
   tech:
     - Linux
     - BTRFS

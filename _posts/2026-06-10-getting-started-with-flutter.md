@@ -3,6 +3,8 @@ layout: post
 title:  "Getting Started with Flutter"
 image: "https://picsum.photos/seed/flutter/1200/500"
 image-desc: "Placeholder header image"
+image_width: 1200
+image_height: 500
 description: "A quick tour of setting up your first Flutter app, from install to a running counter on a real device."
 author: "Teran"
 tags:

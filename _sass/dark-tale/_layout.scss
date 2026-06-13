@@ -90,25 +90,27 @@
     @include transition(opacity .2s ease-out);
 
     &:hover,
-    &:focus {
+    &:focus-visible {
       opacity: 1;
     }
   }
 }
 
-// Show the icon matching the active theme (mirrors _theme.scss logic)
-.theme-icon-light { display: none; }
-.theme-icon-dark { display: inline-block; }
+// Show the icon matching the active theme (mirrors _theme.scss logic).
+// !important is needed to beat Font Awesome's `.svg-inline--fa { display: inline-block }`,
+// which the kit injects after this stylesheet at equal specificity.
+.theme-icon-light { display: none !important; }
+.theme-icon-dark { display: inline-block !important; }
 
 :root[data-theme="light"] {
-  .theme-icon-dark { display: none; }
-  .theme-icon-light { display: inline-block; }
+  .theme-icon-dark { display: none !important; }
+  .theme-icon-light { display: inline-block !important; }
 }
 
 @media (prefers-color-scheme: light) {
   :root:not([data-theme]) {
-    .theme-icon-dark { display: none; }
-    .theme-icon-light { display: inline-block; }
+    .theme-icon-dark { display: none !important; }
+    .theme-icon-light { display: inline-block !important; }
   }
 }
 
@@ -256,3 +258,62 @@ footer {
     opacity: 1;
   }
 } 
+
+// 404 page
+.lost {
+  flex-grow: 1;
+  margin: 0 auto;
+  max-width: 600px;
+  width: 80%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  &-code {
+    font-family: $font-sans-serif;
+    font-size: 8rem;
+    line-height: 1;
+    margin: 0;
+    color: $default-shade;
+
+    @media (max-width: 600px) {
+      font-size: 5rem;
+    }
+  }
+
+  &-message {
+    font-family: $font-sans-serif;
+    font-size: 1.6rem;
+    margin: 1rem 0 .5rem;
+    color: $default-color;
+  }
+
+  &-sub {
+    font-family: $font-serif;
+    color: $default-grey;
+    margin: 0 0 2rem;
+  }
+
+  &-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+    margin: 0;
+
+    a {
+      color: $default-color;
+      font-family: $font-sans-serif;
+      border-bottom: 2px solid transparent;
+      padding-bottom: .15rem;
+      @include transition(all .2s ease-out);
+
+      &:hover,
+      &:focus {
+        color: $link-blue;
+        border-bottom-color: $link-blue;
+      }
+    }
+  }
+}

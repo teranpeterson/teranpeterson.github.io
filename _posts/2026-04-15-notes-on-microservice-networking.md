@@ -3,6 +3,8 @@ layout: post
 title:  "Notes on Microservice Networking"
 image: "https://picsum.photos/seed/networking/1200/500"
 image-desc: "Placeholder header image"
+image_width: 1200
+image_height: 500
 description: "Hard-won lessons on service discovery, retries, and timeouts in a distributed system."
 author: "Teran"
 tags:

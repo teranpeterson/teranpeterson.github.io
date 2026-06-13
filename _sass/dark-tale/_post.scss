@@ -28,7 +28,8 @@
 
   &-header-img {
     max-height: 400px;
-    margin-bottom: 1rem !important;
+    width: auto; // let width follow max-height so the aspect ratio is preserved
+    margin: 0 auto 1rem !important;
   }
 
   &-line {

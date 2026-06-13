@@ -3,6 +3,8 @@ layout: default
 title: "Blog"
 image: "https://img.pngio.com/blog-icon-it-is-a-typewriter-with-dots-instead-of-letters-for-the-typewriter-blog-png-1600_1600.png"
 description: "A collection of some of my thoughts, mingled with projects I am working on. Linux, arduino, AI, networking, basically all the fun stuff college didn't cover."
+pagination:
+  enabled: true
 ---
 
 <main>
@@ -24,14 +26,25 @@ description: "A collection of some of my thoughts, mingled with projects I am wo
     </div>
   </div>
 
-  <div class="pagination">
+  {% if paginator.total_pages > 1 %}
+  <nav class="pagination" aria-label="Blog pages">
     {% if paginator.previous_page %}
-    <a href="{{ paginator.previous_page_path | prepend: site.baseurl }}" class="left arrow"><i class="fas fa-chevron-left"></i></a>
-    {% endif %}
-    {% if paginator.next_page %}
-    <a href="{{ paginator.next_page_path | prepend: site.baseurl }}" class="right arrow"><i class="fas fa-chevron-right"></i></a>
+    <a href="{{ paginator.previous_page_path | prepend: site.baseurl }}" class="left arrow" aria-label="Previous page"><i class="fas fa-chevron-left"></i></a>
     {% endif %}
 
-    <span>{{ paginator.page }}</span>
-  </div>
+    <span class="page-trail">
+      {% for trail in paginator.page_trail %}
+        {% if paginator.page == trail.num %}
+        <span class="page-num current" aria-current="page">{{ trail.num }}</span>
+        {% else %}
+        <a class="page-num" href="{{ trail.path | replace: 'index.html', '' | prepend: site.baseurl }}" title="{{ trail.title }}">{{ trail.num }}</a>
+        {% endif %}
+      {% endfor %}
+    </span>
+
+    {% if paginator.next_page %}
+    <a href="{{ paginator.next_page_path | prepend: site.baseurl }}" class="right arrow" aria-label="Next page"><i class="fas fa-chevron-right"></i></a>
+    {% endif %}
+  </nav>
+  {% endif %}
 </main>

@@ -24,7 +24,7 @@ layout: default
         {% endif %}
             {% if project.image %}
             <div class="project-card-media">
-                <img src="{{ project.image | prepend: site.baseurl }}" alt="{{ project.title }}" loading="lazy">
+                <img src="{{ project.image | prepend: site.baseurl }}" alt="{{ project.title }}" loading="lazy"{% if project.image_width and project.image_height %} width="{{ project.image_width }}" height="{{ project.image_height }}"{% endif %}>
             </div>
             {% endif %}
             <div class="project-card-body">
