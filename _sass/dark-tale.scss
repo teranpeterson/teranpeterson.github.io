@@ -1,9 +1,8 @@
-@import 'dark-tale/variables';
-@import 'dark-tale/base';
-@import 'dark-tale/code';
-@import 'dark-tale/post';
-@import 'dark-tale/syntax';
-@import 'dark-tale/layout';
-@import 'dark-tale/pagination';
-@import 'dark-tale/catalogue';
-@import 'dark-tale/timeline';
+@use 'dark-tale/base';
+@use 'dark-tale/code';
+@use 'dark-tale/post';
+@use 'dark-tale/syntax';
+@use 'dark-tale/layout';
+@use 'dark-tale/pagination';
+@use 'dark-tale/catalogue';
+@use 'dark-tale/timeline';

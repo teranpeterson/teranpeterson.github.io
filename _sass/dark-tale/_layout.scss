@@ -1,3 +1,5 @@
+@use 'variables' as *;
+
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -106,6 +108,13 @@ footer {
   justify-content: center;
   text-align: center;
   font-family: $font-sans-serif;
+
+  h1.home-title,
+  p.home-subtitle {
+    margin: 0;
+    color: $default-color;
+    font-weight: normal;
+  }
 
   &-subtitle {
     font-size: 2rem;
