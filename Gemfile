@@ -20,7 +20,7 @@ end
 gem "http_parser.rb", "~> 0.8.0"
 
 install_if -> { RUBY_PLATFORM =~ %r!mingw|mswin|java! } do
-  gem "tzinfo", "~> 1.2"
+  gem "tzinfo", "~> 2.0"
   gem "tzinfo-data"
 end
 
