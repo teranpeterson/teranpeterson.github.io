@@ -1,0 +1,53 @@
+// Color themes via CSS custom properties.
+//
+// Dark is the default. Light applies when:
+//   * the visitor explicitly chooses it (html[data-theme="light"]), or
+//   * the OS prefers light AND the visitor has not made an explicit choice.
+// An explicit dark choice (html[data-theme="dark"]) always wins over the OS.
+
+@mixin dark-palette {
+  --bg:               #181a1b; // page background
+  --accent:           #232627; // cards, nav/footer dividers, table cells
+  --text:             #c9c5be; // body text
+  --emphasis:         #e5e5e5; // headings / emphasized text
+  --muted:            #a6a6a6; // captions, dates (lightened from #979797 for contrast)
+  --link:             #5ca9e4; // links / accents
+  --hairline:         rgba(255, 255, 255, 0.08); // subtle dividers
+  --card-border:      rgba(255, 255, 255, 0.07);
+  --card-border-hover: rgba(92, 169, 228, 0.55);
+  --pill-border:      rgba(255, 255, 255, 0.12);
+}
+
+@mixin light-palette {
+  --bg:               #ffffff;
+  --accent:           #f2f3f5;
+  --text:             #33363a;
+  --emphasis:         #16181a;
+  --muted:            #5c6066; // ~5.9:1 on white
+  --link:             #1768ad;
+  --hairline:         rgba(0, 0, 0, 0.10);
+  --card-border:      rgba(0, 0, 0, 0.12);
+  --card-border-hover: rgba(23, 104, 173, 0.55);
+  --pill-border:      rgba(0, 0, 0, 0.15);
+}
+
+:root {
+  @include dark-palette;
+}
+
+// Explicit light choice
+:root[data-theme="light"] {
+  @include light-palette;
+}
+
+// OS prefers light and no explicit choice yet
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) {
+    @include light-palette;
+  }
+}
+
+// Smooth the switch (respected-reduced-motion handled globally in _base.scss)
+html {
+  transition: background-color .3s ease, color .3s ease;
+}

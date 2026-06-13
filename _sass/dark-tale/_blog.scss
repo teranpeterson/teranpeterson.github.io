@@ -1,0 +1,52 @@
+@use 'variables' as *;
+
+.post-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin: 2rem 0 3rem;
+}
+
+.post-card {
+  display: block;
+  background-color: $default-accent;
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  color: $default-color;
+  text-decoration: none;
+  padding: 1.5rem 1.75rem;
+  @include transition(transform .2s ease-out, border-color .2s ease-out);
+
+  &-meta {
+    font-family: $font-serif;
+    font-size: .8rem;
+    letter-spacing: .3px;
+    color: $default-grey;
+    margin-bottom: .4rem;
+  }
+
+  &-title {
+    font-family: $font-sans-serif;
+    font-size: 1.5rem;
+    line-height: 1.25;
+    margin: 0 0 .6rem;
+    color: $default-shade;
+  }
+
+  &-excerpt {
+    font-size: .95rem;
+    line-height: 1.55;
+    margin: 0 0 1rem;
+    color: $default-color;
+  }
+
+  .tags {
+    margin-top: 0;
+  }
+}
+
+a.post-card:hover,
+a.post-card:focus {
+  transform: translateY(-3px);
+  border-color: var(--card-border-hover);
+}

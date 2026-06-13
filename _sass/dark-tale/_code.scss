@@ -25,7 +25,9 @@ pre code {
 }
 
 .highlight {
+  position: relative;
   background-color: $code-background-blue;
+  color: $code-text; // fixed light text — the block background is dark in both themes
   border-radius: 3px;
   line-height: 1.4;
   margin: 0 0 1rem;
@@ -44,6 +46,53 @@ pre code {
     -webkit-user-select: none;
     -moz-user-select: none;
     user-select: none;
+  }
+}
+
+// "Copy" button injected into code blocks by custom-code.js
+.copy-btn {
+  position: absolute;
+  top: .5rem;
+  right: .5rem;
+  font-size: .85rem;
+  line-height: 1;
+  color: #c9c5be;
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 4px;
+  padding: .35rem .45rem;
+  cursor: pointer;
+  opacity: 1; // visible by default (touch devices have no hover)
+  @include transition(opacity .15s ease-out, background-color .15s ease-out, border-color .15s ease-out);
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.16);
+  }
+
+  &.copied {
+    color: $code-comment-green;
+    border-color: $code-comment-green;
+  }
+
+  &.error {
+    color: $code-error-red;
+    border-color: $code-error-red;
+  }
+}
+
+// On hover-capable devices, reveal the button only when the block is hovered
+// or the button is focused via keyboard (focus-visible avoids it sticking
+// open after a mouse click).
+@media (hover: hover) {
+  .copy-btn {
+    opacity: 0;
+  }
+
+  .highlight:hover .copy-btn,
+  .copy-btn:focus-visible,
+  .copy-btn.copied,
+  .copy-btn.error {
+    opacity: 1;
   }
 }
 

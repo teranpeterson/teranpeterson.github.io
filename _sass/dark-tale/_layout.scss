@@ -57,11 +57,58 @@
     &:focus {
       opacity: 1;
     }
+
+    &.active {
+      opacity: 1;
+
+      a {
+        color: $link-blue;
+      }
+    }
   }
 
   a {
     color: $default-color;
     font-family: $font-sans-serif;
+  }
+
+  // Light/dark theme toggle button
+  .nav-toggle-item {
+    opacity: 1;
+  }
+
+  .theme-toggle {
+    background: none;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    color: $default-color;
+    font-size: 1rem;
+    line-height: 1;
+    opacity: .6;
+    @include transition(opacity .2s ease-out);
+
+    &:hover,
+    &:focus {
+      opacity: 1;
+    }
+  }
+}
+
+// Show the icon matching the active theme (mirrors _theme.scss logic)
+.theme-icon-light { display: none; }
+.theme-icon-dark { display: inline-block; }
+
+:root[data-theme="light"] {
+  .theme-icon-dark { display: none; }
+  .theme-icon-light { display: inline-block; }
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) {
+    .theme-icon-dark { display: none; }
+    .theme-icon-light { display: inline-block; }
   }
 }
 
@@ -129,6 +176,19 @@ footer {
 
     @media (max-width: 600px) {
       font-size: 4rem;
+    }
+  }
+
+  &-tagline {
+    font-family: $font-serif;
+    color: $default-grey;
+    font-size: 1.15rem;
+    line-height: 1.6;
+    max-width: 34rem;
+    margin: 1.25rem auto 0;
+
+    @media (max-width: 600px) {
+      font-size: 1rem;
     }
   }
 

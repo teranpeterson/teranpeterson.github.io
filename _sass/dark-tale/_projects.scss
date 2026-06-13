@@ -1,0 +1,90 @@
+@use 'variables' as *;
+
+// Intro blurb above the project grid
+.post-intro {
+  color: $default-grey;
+  font-family: $font-serif;
+  text-align: center;
+  max-width: 38rem;
+  margin: -1rem auto 2.5rem;
+
+  p {
+    margin: 0;
+  }
+}
+
+.project-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
+  gap: 1.5rem;
+  margin: 0 0 3rem;
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background-color: $default-accent;
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  color: $default-color;
+  text-decoration: none;
+  @include transition(transform .2s ease-out, border-color .2s ease-out);
+
+  &-media {
+    overflow: hidden;
+    background-color: $default-background;
+
+    img {
+      width: 100%;
+      max-height: 180px;
+      object-fit: cover;
+      margin: 0;
+      @include transition(transform .3s ease-out);
+    }
+  }
+
+  &-body {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 1.25rem 1.4rem 1.4rem;
+  }
+
+  &-title {
+    font-family: $font-sans-serif;
+    font-size: 1.4rem;
+    margin: 0 0 .5rem;
+    color: $default-shade;
+  }
+
+  &-desc {
+    font-size: .95rem;
+    line-height: 1.5;
+    margin: 0 0 1rem;
+    color: $default-color;
+  }
+
+  &-cta {
+    margin-top: auto;
+    font-family: $font-sans-serif;
+    font-size: .85rem;
+    color: $link-blue;
+
+    i {
+      font-size: .8rem;
+      margin-left: .3rem;
+    }
+  }
+}
+
+// Hover affordance only for cards that are links
+a.project-card:hover,
+a.project-card:focus {
+  transform: translateY(-4px);
+  border-color: var(--card-border-hover);
+
+  .project-card-media img {
+    transform: scale(1.04);
+  }
+}

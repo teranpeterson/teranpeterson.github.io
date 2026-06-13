@@ -12,6 +12,7 @@ gem "rexml", ">= 3.3.9"
 
 group :jekyll_plugins do
   gem "jekyll-feed", "~> 0.17"
+  gem "jekyll-archives", "~> 2.3"
 end
 
 # Lock `http_parser.rb` on Apple Silicon (older versions fail to build on M-series Macs).

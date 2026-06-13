@@ -1,3 +1,45 @@
-- title: Arch Build
+# Project cards shown on /projects/
+#
+# Fields:
+#   title        (required) Card heading.
+#   description  Short blurb shown under the title.
+#   image        Optional thumbnail. Path is relative to the site root, e.g. /assets/foo.png
+#   tech         Optional list of technologies, rendered as small pills.
+#   link         Optional. Where the card points.
+#                  - External URLs (https://...) open in a new tab.
+#                  - Internal paths (/tags/arch/, /blog/...) stay in the same tab.
+#                    Use an internal /tags/<tag>/ link to collect related blog posts.
+#   cta          Optional call-to-action label (default: "View project").
+
+- title: Arch Linux Build
+  description: >
+    A from-scratch Arch install on BTRFS with full-disk LUKS encryption,
+    tuned for modern UEFI laptops. Read the write-ups and related posts.
   image: /assets/arch.png
-  link: /blog/2020-11-30/my-arch-linux-build
+  tech:
+    - Linux
+    - BTRFS
+    - LUKS
+  link: /tags/arch/
+  cta: Read the posts
+
+- title: Personal Website
+  description: >
+    This site — a customized Jekyll theme, built and deployed to GitHub Pages
+    with a GitHub Actions pipeline and Dart Sass.
+  tech:
+    - Jekyll
+    - Sass
+    - GitHub Actions
+  link: https://github.com/teranpeterson/teranpeterson.github.io
+  cta: View source
+
+- title: Mobile Banking App
+  description: >
+    A cross-platform mobile banking experience built with Flutter on top of a
+    microservice backend serving millions of users.
+  tech:
+    - Flutter
+    - Dart
+    - .NET
+  # No link yet — renders as a static card.

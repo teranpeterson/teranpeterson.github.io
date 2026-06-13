@@ -5,6 +5,10 @@ image: "/assets/arch.png"
 image-desc: "Arch logo"
 description: "A definitive guide to installing Arch Linux on a BTRFS file system with full data LUKS encryption. Designed for modern computers with SSD and UEFI support."
 author: "Teran"
+tags:
+  - Linux
+  - Arch
+  - Tutorial
 ---
 
 My first dive into Linux was when I was 14 or 15 years old. I had been following a bunch of hacking forums for years and kept hearing about "BackTrack Linux" (the OG hacking distro, precursor to Kali). Back then, all I knew about Linux was that it was some alternative to Windows that hackers used. It fascinated me. I read and watched everything I could find about it. I couldn't believe that it was free! I couldn't believe the number of hacking tools it came with! In my young mind, all it would took to become a hacker was installing BackTrack. Following their wiki, I was able to create a persistent, live USB that I could boot to on my computer. Naturally, I immediately ran a brunch of programs and turned into the worlds wimpiest script kitty. With some practice, I managed to man-in-the-middle my dad's computer and crack the WiFi password (that I already knew). That was about as far as my hacking career went.

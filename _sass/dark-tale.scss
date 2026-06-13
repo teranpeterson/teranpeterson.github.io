@@ -1,3 +1,4 @@
+@use 'dark-tale/theme';
 @use 'dark-tale/base';
 @use 'dark-tale/code';
 @use 'dark-tale/post';
@@ -5,4 +6,6 @@
 @use 'dark-tale/layout';
 @use 'dark-tale/pagination';
 @use 'dark-tale/catalogue';
-@use 'dark-tale/timeline';
+@use 'dark-tale/blog';
+@use 'dark-tale/projects';
+@use 'dark-tale/tags';

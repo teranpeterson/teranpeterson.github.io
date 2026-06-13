@@ -16,14 +16,28 @@ layout: default
       <br>
       <span>on&nbsp;</span><time datetime="{{ page.date }}">{{ page.date | date: "%B %d, %Y" }}</time>
       {% endif %}
+
+      {% assign words = content | number_of_words %}
+      {% assign minutes = words | plus: 199 | divided_by: 200 %}
+      <br>
+      <span>{{ minutes }} min read</span>
     </div>
 
     <h1 class="post-title">{{ page.title }}</h1>
     <div class="post-line"></div>
 
-    <img src="{{ page.image }}" alt="{{ page['image-desc'] }}" class="post-header-img">
+    <img src="{{ page.image }}" alt="{{ page['image-desc'] }}" class="post-header-img" decoding="async" fetchpriority="high">
 
     {{ content }}
+
+    {% if page.tags.size > 0 %}
+    <div class="tags post-tags">
+      {% for tag in page.tags %}
+      {% assign tag_slug = tag | slugify %}
+      <a class="tag" href="{{ '/tags/' | append: tag_slug | append: '/' | prepend: site.baseurl }}">{{ tag }}</a>
+      {% endfor %}
+    </div>
+    {% endif %}
   </div>
 
   <div class="pagination">

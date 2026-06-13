@@ -1,0 +1,23 @@
+---
+layout: default
+---
+
+<main>
+  <div class="catalogue">
+    <div class="catalogue-header">
+      <p class="catalogue-eyebrow">Tag</p>
+      <h1 class="catalogue-heading">#{{ page.title }}</h1>
+      <p class="catalogue-subhead">
+        {{ page.posts | size }} post{% if page.posts.size != 1 %}s{% endif %} tagged
+        <strong>{{ page.title }}</strong>.
+        <a href="{{ '/blog' | prepend: site.baseurl }}">View all posts</a>
+      </p>
+    </div>
+
+    <div class="post-cards">
+      {% for post in page.posts %}
+        {% include post-card.html post=post %}
+      {% endfor %}
+    </div>
+  </div>
+</main>

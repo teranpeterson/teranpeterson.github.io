@@ -1,0 +1,46 @@
+---
+layout: default
+---
+
+<main>
+<div class="post">
+    <h1 class="post-title">{{ page.title }}</h1>
+    <div class="post-line"></div>
+    <div class="post-intro">{{ content }}</div>
+
+    <div class="project-cards">
+        {% for project in site.data.projects %}
+        {% assign is_external = false %}
+        {% if project.link contains "://" %}{% assign is_external = true %}{% endif %}
+
+        {% if project.link %}
+          {% if is_external %}
+        <a class="project-card" href="{{ project.link }}" target="_blank" rel="noopener">
+          {% else %}
+        <a class="project-card" href="{{ project.link | prepend: site.baseurl }}">
+          {% endif %}
+        {% else %}
+        <div class="project-card">
+        {% endif %}
+            {% if project.image %}
+            <div class="project-card-media">
+                <img src="{{ project.image | prepend: site.baseurl }}" alt="{{ project.title }}" loading="lazy">
+            </div>
+            {% endif %}
+            <div class="project-card-body">
+                <h2 class="project-card-title">{{ project.title }}</h2>
+                {% if project.description %}
+                <p class="project-card-desc">{{ project.description }}</p>
+                {% endif %}
+                {% if project.link %}
+                <span class="project-card-cta">
+                    {{ project.cta | default: "View project" }}
+                    {% if is_external %}<i class="fas fa-arrow-up-right-from-square"></i>{% else %}<i class="fas fa-arrow-right"></i>{% endif %}
+                </span>
+                {% endif %}
+            </div>
+        {% if project.link %}</a>{% else %}</div>{% endif %}
+        {% endfor %}
+    </div>
+</div>
+</main>

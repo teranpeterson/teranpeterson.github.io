@@ -1,13 +1,15 @@
-// Main Colors
-$default-background: #181a1b;  // Black Background
-$default-accent: #232627;     // Nav/Footer Divider
-$default-color: #c9c5be;      // White Main Text
-$default-shade: #e5e5e5;      // Lighter Text
-$default-grey: #979797;       // Faded Grey
-$link-blue: #5ca9e4;          // Blue for links
+// Main Colors — resolved at runtime from CSS custom properties (see _theme.scss).
+// This lets every existing `$default-*` reference adapt to light/dark automatically.
+$default-background: var(--bg);    // Page background
+$default-accent: var(--accent);    // Nav/Footer divider, cards
+$default-color: var(--text);       // Main text
+$default-shade: var(--emphasis);   // Headings / lighter text
+$default-grey: var(--muted);       // Faded grey (captions, dates)
+$link-blue: var(--link);           // Links / accents
 
 // Code Colors
 $code-background-blue:#0d2232;// Background blue
+$code-text: #c9c5be;          // Default code foreground (fixed across themes — code bg is always dark)
 $code-comment-green: #6a9955; // Comment green
 $code-accent-green: #4ec9b0;  // Keyword green
 $code-number-green: #b5cea8;  // Number green

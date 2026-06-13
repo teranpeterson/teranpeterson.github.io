@@ -1,46 +1,10 @@
 @use 'variables' as *;
 
+// Centered container for the blog index and tag archive pages.
+// The post list itself is rendered as cards (see _blog.scss).
 .catalogue {
   display: block;
   margin: 0 auto;
   max-width: 1000px;
   width: 80%;
-
-  &-item {
-    border-bottom: 1px solid $default-shade;
-    color: $default-color;
-    display: block;
-    padding: 2rem 0;
-
-    &:hover .catalogue-line,
-    &:focus .catalogue-line {
-      width: 5rem;
-    }
-
-    &:last-child {
-      border: 0;
-    }
-  }
-
-  &-time {
-    color: $default-grey;
-    font-family: $font-serif;
-    letter-spacing: .5px;
-  }
-
-  &-title {
-    color: $default-shade;
-    display: block;
-    font-family: $font-sans-serif;
-    font-size: 2rem;
-    font-weight: 700;
-    margin: .5rem 0;
-  }
-
-  &-line {
-    @include transition(all .3s ease-out);
-    border-top: .2rem solid $default-shade;
-    display: block;
-    width: 2rem;
-  }
 }

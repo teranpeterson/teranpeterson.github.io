@@ -1,0 +1,23 @@
+{%- comment -%}
+Renders a single blog post as a horizontal card. Usage:
+  {% include post-card.html post=post %}
+{%- endcomment -%}
+<a href="{{ include.post.url | prepend: site.baseurl }}" class="post-card">
+  <div class="post-card-body">
+    <div class="post-card-meta">
+      <time datetime="{{ include.post.date | date_to_xmlschema }}">{{ include.post.date | date: "%B %d, %Y" }}</time>
+      {% assign words = include.post.content | number_of_words %}
+      {% assign minutes = words | plus: 199 | divided_by: 200 %}
+      <span aria-hidden="true">·</span> {{ minutes }} min read
+    </div>
+    <h2 class="post-card-title">{{ include.post.title }}</h2>
+    <p class="post-card-excerpt">{{ include.post.description | default: include.post.content | strip_html | truncatewords: 40 }}</p>
+    {% if include.post.tags.size > 0 %}
+    <div class="tags">
+      {% for tag in include.post.tags %}
+      <span class="tag">{{ tag }}</span>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+</a>
