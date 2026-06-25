@@ -35,13 +35,3 @@
     - GitHub Actions
   link: https://github.com/teranpeterson/teranpeterson.github.io
   cta: View source
-
-- title: Mobile Banking App
-  description: >
-    A cross-platform mobile banking experience built with Flutter on top of a
-    microservice backend serving millions of users.
-  tech:
-    - Flutter
-    - Dart
-    - .NET
-  # No link yet — renders as a static card.

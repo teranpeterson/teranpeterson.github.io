@@ -3,8 +3,7 @@ title:          Teran
 description:    "Software Engineer"
 url:            "https://teranpeterson.com"
 
-# Google Analytics 4 — Measurement ID (Admin -> Data Streams -> web stream).
-# Leave blank to disable analytics.
+# Google Analytics
 google_analytics: G-CFPTYPV45N
 
 # Author

@@ -6,5 +6,4 @@ description: "A selection of things I've built — side projects, experiments, a
 permalink: /projects/
 ---
 
-A selection of things I've built — side projects, experiments, and open-source
-work.
+A selection of things I've built — side projects, experiments, and open-source work.
